@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "similar")
-public class Similar {
+public class Similar implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idSimilar")
@@ -28,7 +28,7 @@ public class Similar {
     @Column (name = "descricaoSimilar")
     private String descricaoSimilar;
     
-    @OneToMany (mappedBy="produto" , targetEntity=Produto.class)
+    @OneToMany (mappedBy="similar" , targetEntity=Produto.class)
     private List<Produto> produto;
 
     /**

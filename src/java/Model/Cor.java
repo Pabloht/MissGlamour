@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "cor")
-public class Cor {
+public class Cor implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCor")
@@ -28,8 +28,8 @@ public class Cor {
     @Column(name = "descricaoCor")
     private String descricaoCor;
     
-    @OneToMany (mappedBy="produto" , targetEntity=Produto.class)
-    private List<Produto> produto;
+    //@OneToMany (mappedBy="cor" , targetEntity=Produto.class)
+    //private List<Produto> produto;
 
     /**
      * @return the idCor
@@ -62,14 +62,14 @@ public class Cor {
     /**
      * @return the produto
      */
-    public List<Produto> getProduto() {
-        return produto;
-    }
-
-    /**
-     * @param produto the produto to set
-     */
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
-    }
+//    public List<Produto> getProduto() {
+//        return produto;
+//    }
+//
+//    /**
+//     * @param produto the produto to set
+//     */
+//    public void setProduto(List<Produto> produto) {
+//        this.produto = produto;
+//    }
 }

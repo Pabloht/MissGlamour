@@ -24,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "venda")
-public class Venda {
+public class Venda implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idVenda")
@@ -44,12 +44,12 @@ public class Venda {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
     
-    @ManyToMany 
-    @JoinTable(name="pagamentoVenda", 
-    joinColumns=@JoinColumn(name="idVenda"),
-    inverseJoinColumns=@JoinColumn(name="idCondicao"))
-    @Column(name = "vendaCondicao")
-    private List<CondicaoPagamento> condicaoPagamento;
+//    @ManyToMany 
+//    @JoinTable(name="pagamentoVenda", 
+//    joinColumns=@JoinColumn(name="idVenda"),
+//    inverseJoinColumns=@JoinColumn(name="idCondicao"))
+//    @Column(name = "condicaoPagamento")
+//    private List<CondicaoPagamento> condicaoPagamento;
 
     /**
      * @return the idVenda
@@ -157,14 +157,14 @@ public class Venda {
     /**
      * @return the condicaoPagamento
      */
-    public List<CondicaoPagamento> getCondicaoPagamento() {
-        return condicaoPagamento;
-    }
-
-    /**
-     * @param condicaoPagamento the condicaoPagamento to set
-     */
-    public void setCondicaoPagamento(List<CondicaoPagamento> condicaoPagamento) {
-        this.condicaoPagamento = condicaoPagamento;
-    }
+//    public List<CondicaoPagamento> getCondicaoPagamento() {
+//        return condicaoPagamento;
+//    }
+//
+//    /**
+//     * @param condicaoPagamento the condicaoPagamento to set
+//     */
+//    public void setCondicaoPagamento(List<CondicaoPagamento> condicaoPagamento) {
+//        this.condicaoPagamento = condicaoPagamento;
+//    }
 }

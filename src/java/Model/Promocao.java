@@ -21,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "promocao")
-public class Promocao {
+public class Promocao implements java.io.Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "idPromocao")

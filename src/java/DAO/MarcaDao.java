@@ -5,11 +5,13 @@
  */
 package DAO;
 
+import Model.Cor;
 import Model.Marca;
 import javax.persistence.EntityTransaction;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.RollbackException;
 
 import util.EntityManagerUtil;
 /**
@@ -21,25 +23,40 @@ public class MarcaDao {
     public EntityManager getEntityManager() {
         return entityManager;
     }
-    public String  incluirMarca(Marca m){
+    
+    public void  incluirMarca(Marca m) throws RollbackException , Exception {
+        
 		String retorno = "Marca gravada com sucesso";
 		
-		EntityTransaction tx = getEntityManager().getTransaction();
-		 
+		//EntityTransaction tx = getEntityManager().getTransaction();
+		 EntityManager em = null;
         try {
-            tx.begin();
+            //tx.begin();
+            em = getEntityManager();
+            //getEntityManager().persist(m);
+            em.getTransaction().begin();
+            //tx.commit();
+            em.persist(m);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            try {
+                em.getTransaction().rollback();
+            } catch (Exception re) {
+                
+            }
+//            System.out.println("erro " + t);
+//            t.printStackTrace();
+//            
+//            tx.rollback();
+            throw ex;
             
-            getEntityManager().persist(m);
+       // } finally {
             
-            tx.commit();
-        } catch (Throwable t) {
-            t.printStackTrace();
-            tx.rollback();
-        } finally {
-            
-        }
+       // }
 		
-		return retorno;
+		
 		
 	}
+    }
 }
+

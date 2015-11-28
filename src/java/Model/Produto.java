@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table (name = "produto")
-public class Produto {
+public class Produto implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "idProduto")
@@ -41,23 +41,27 @@ public class Produto {
     private double valorProduto;
     
     @ManyToOne
-    @JoinColumn(name = "marca")
+    @JoinColumn(name = "idMarca")
     private Marca marca;
     
     @ManyToOne
-    @JoinColumn(name = "cor")
+    @JoinColumn(name = "idCor")
     private Cor cor;
     
     @ManyToOne
-    @JoinColumn(name = "similar")
+    @JoinColumn(name = "idSimilar")
     private Similar similar;
     
     @ManyToOne
-    @JoinColumn(name = "tamanho")
+    @JoinColumn(name = "idTamanho")
     private Tamanho tamanho;
     
-    @OneToMany (mappedBy="produto" , targetEntity=Foto.class)
-    private List<Foto> foto;
+    @ManyToOne
+    @JoinColumn(name = "idPromocao")
+    private Promocao promocao;
+    
+//    @OneToMany (mappedBy="produto" , targetEntity=Foto.class)
+//    private List<Foto> foto;
 
     /**
      * @return the idProduto
@@ -216,14 +220,14 @@ public class Produto {
     /**
      * @return the foto
      */
-    public List<Foto> getFoto() {
-        return foto;
-    }
-
-    /**
-     * @param foto the foto to set
-     */
-    public void setFoto(List<Foto> foto) {
-        this.foto = foto;
-    }
+//    public List<Foto> getFoto() {
+//        return foto;
+//    }
+//
+//    /**
+//     * @param foto the foto to set
+//     */
+//    public void setFoto(List<Foto> foto) {
+//        this.foto = foto;
+//    }
 }

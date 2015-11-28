@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tamanho")
-public class Tamanho {
+public class Tamanho implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTamanho")
@@ -28,7 +28,7 @@ public class Tamanho {
     @Column(name = "descricaoTamanho")
     private String descricaoTamanho;
     
-    @OneToMany (mappedBy="produto" , targetEntity=Produto.class)
+    @OneToMany (mappedBy="tamanho" , targetEntity=Produto.class)
     private List<Produto> produto;
     /**
      * @return the idTamanho

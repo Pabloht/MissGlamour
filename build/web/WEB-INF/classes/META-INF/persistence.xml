@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="missglamour" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <!--   <class>Model.Cidade</class>
+    <class>Model.Cliente</class>
+    <class>Model.CondicaoPagamento</class>
+    <class>Model.Cor</class>
+    <class>Model.Estado</class>
+    <class>Model.Foto</class>
+    <class>Model.Funcao</class>
+    <class>Model.Funcionario</class>
+    <class>Model.Marca</class>
+    <class>Model.Produto</class>
+    <class>Model.Promocao</class>
+    <class>Model.Similar</class>
+    <class>Model.Tamanho</class>
+    <class>Model.Venda</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    -->
+    <class>Model.Cidade</class>
+    <class>Model.Cliente</class>
+    <class>Model.CondicaoPagamento</class>
+    <class>Model.Cor</class>
+    <class>Model.Estado</class>
+    <class>Model.Foto</class>
+    <class>Model.Funcao</class>
+    <class>Model.Funcionario</class>
+    <class>Model.Marca</class>
+    <class>Model.Produto</class>
+    <class>Model.Promocao</class>
+    <class>Model.Similar</class>
+    <class>Model.Tamanho</class>
+    <class>Model.Venda</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/missglamour"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.password" value="vertrigo"/>
+    </properties>
+  </persistence-unit>
+</persistence>

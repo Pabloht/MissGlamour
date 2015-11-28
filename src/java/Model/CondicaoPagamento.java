@@ -21,8 +21,8 @@ import javax.persistence.Table;
  * @author PabloHenrique
  */
 @Entity
-@Table(name = "condicaoPagamento")
-public class CondicaoPagamento {
+@Table(name = "condicaopagamento")
+public class CondicaoPagamento implements java.io.Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "idCondicao")
@@ -38,9 +38,9 @@ public class CondicaoPagamento {
     @Column (name = "quantidadeParcela")
     private int quantidadeParcela;
     
-    @Column(name = "venda")
-    @ManyToMany(mappedBy = "condicaoPagamento", cascade = CascadeType.ALL)
-    private List<Venda> venda;
+//    @Column(name = "venda")   
+//    @ManyToMany(mappedBy = "condicaopagamento", cascade = CascadeType.ALL)
+//    private List<Venda> venda;
 
     /**
      * @return the idCondicao
@@ -129,16 +129,16 @@ public class CondicaoPagamento {
     /**
      * @return the venda
      */
-    public List<Venda> getVenda() {
-        return venda;
-    }
-
-    /**
-     * @param venda the venda to set
-     */
-    public void setVenda(List<Venda> venda) {
-        this.venda = venda;
-    }
-    
+//    public List<Venda> getVenda() {
+//        return venda;
+//    }
+//
+//    /**
+//     * @param venda the venda to set
+//     */
+//    public void setVenda(List<Venda> venda) {
+//        this.venda = venda;
+//    }
+//    
     
 }

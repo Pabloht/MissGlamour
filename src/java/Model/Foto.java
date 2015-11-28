@@ -5,21 +5,35 @@
  */
 package Model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author PabloHenrique
  */
-public class Foto {
+
+@Entity
+@Table(name = "foto")
+public class Foto implements java.io.Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idFoto")
     private int idFoto;
+    @Column(name = "ordem")
     private int ordem;
-    private String nome;
+    @Column(name = "nomeFoto")
+    private String nomeFoto;
     
-    @ManyToOne
-    @JoinColumn(name = "idProduto")
-    private Produto produto;
+//    @ManyToOne
+//    @JoinColumn(name = "idProduto")
+//    private Produto produto;
 
     /**
      * @return the idFoto
@@ -53,27 +67,27 @@ public class Foto {
      * @return the nome
      */
     public String getNome() {
-        return nome;
+        return nomeFoto;
     }
 
     /**
      * @param nome the nome to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nomeFoto) {
+        this.nomeFoto = nomeFoto;
     }
 
     /**
      * @return the produto
      */
-    public Produto getProduto() {
-        return produto;
-    }
-
-    /**
-     * @param produto the produto to set
-     */
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
+//    public Produto getProduto() {
+//        return produto;
+//    }
+//
+//    /**
+//     * @param produto the produto to set
+//     */
+//    public void setProduto(Produto produto) {
+//        this.produto = produto;
+//    }
 }

@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "marca")
-public class Marca {
+public class Marca implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idMarca")
@@ -28,11 +28,15 @@ public class Marca {
     @Column(name = "descricaoMarca")
     private String descricaoMarca;
     
-    @OneToMany (mappedBy="produto" , targetEntity=Produto.class)
-    private List<Produto> produto;
+////    @OneToMany (mappedBy="marca" , targetEntity=Produto.class)
+////    private List<Produto> produto;
 
     public Marca(String descricao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+    }
+
+    public Marca() {
+       
     }
 
     /**
@@ -66,14 +70,14 @@ public class Marca {
     /**
      * @return the produto
      */
-    public List<Produto> getProduto() {
-        return produto;
-    }
-
-    /**
-     * @param produto the produto to set
-     */
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
-    }
+//    public List<Produto> getProduto() {
+//        return produto;
+//    }
+//
+//    /**
+//     * @param produto the produto to set
+//     */
+//    public void setProduto(List<Produto> produto) {
+//        this.produto = produto;
+//    }
 }
