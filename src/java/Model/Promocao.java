@@ -7,33 +7,18 @@ package Model;
 
 import java.sql.Date;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 /**
  *
  * @author PabloHenrique
  */
-@Entity
-@Table(name = "promocao")
 public class Promocao implements java.io.Serializable {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "idPromocao")
     private int idPromocao;
-    @Column (name = "dataInicial")
     private Date dataInicial;
-    @Column (name = "dataFinal")
     private Date dataFinal;
-    @Column (name = "disponivel")
     private boolean disponivel;
     
-    @OneToMany (mappedBy="promocao" , targetEntity=Produto.class)
     private List<Produto> produto;
 
     /**

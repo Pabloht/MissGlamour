@@ -6,38 +6,18 @@
 package Model;
 
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 /**
  *
  * @author PabloHenrique
  */
-@Entity
-@Table(name = "cidade")
-public class Cidade implements java.io.Serializable {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "idCidade")
-    private int idCidade;
-    @Column(name = "nomeCidade")
-    private String nomeCidade;
-    
-    
-     @OneToMany (mappedBy="cidade" , targetEntity=Cliente.class)
-    private List<Cliente> cliente;
-    
-    @ManyToOne
-    @JoinColumn(name = "idEstado")
-    private Estado estado;
 
+public class Cidade implements java.io.Serializable {
+    private int idCidade;
+    private String nomeCidade;
+    private Estado estado;
+    
     /**
      * @return the idCidade
      */
@@ -69,17 +49,7 @@ public class Cidade implements java.io.Serializable {
     /**
      * @return the cliente
      */
-    public List<Cliente> getCliente() {
-        return cliente;
-    }
-
-    /**
-     * @param cliente the cliente to set
-     */
-    public void setCliente(List<Cliente> cliente) {
-        this.cliente = cliente;
-    }
-
+    
     /**
      * @return the estado
      */

@@ -19,21 +19,12 @@ import javax.persistence.Table;
  * @author PabloHenrique
  */
 
-@Entity
-@Table(name = "foto")
 public class Foto implements java.io.Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idFoto")
     private int idFoto;
-    @Column(name = "ordem")
     private int ordem;
-    @Column(name = "nomeFoto")
     private String nomeFoto;
-    
-//    @ManyToOne
-//    @JoinColumn(name = "idProduto")
-//    private Produto produto;
+
+    private Produto produto;
 
     /**
      * @return the idFoto
@@ -80,14 +71,14 @@ public class Foto implements java.io.Serializable {
     /**
      * @return the produto
      */
-//    public Produto getProduto() {
-//        return produto;
-//    }
-//
-//    /**
-//     * @param produto the produto to set
-//     */
-//    public void setProduto(Produto produto) {
-//        this.produto = produto;
-//    }
+    public Produto getProduto() {
+        return produto;
+    }
+
+    /**
+     * @param produto the produto to set
+     */
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 }

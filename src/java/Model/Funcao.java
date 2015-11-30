@@ -6,34 +6,19 @@
 package Model;
 
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 /**
  *
  * @author PabloHenrique
  */
-@Entity
-@Table(name = "funcao")
 public class Funcao {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idFuncao")
     private int idFuncao;
-    @Column(name = "nomeFuncao")
     private String nomeFuncao;
-    @Column(name = "condicao")
     private boolean condicao;
-    @Column(name = "permissao")
     private int permissao;
     
-    @OneToMany (mappedBy="funcao" , targetEntity=Funcionario.class)
-    private List<Funcionario> funcionario;
+
 
     /**
      * @return the idFuncao
@@ -94,14 +79,5 @@ public class Funcao {
     /**
      * @return the funcionario
      */
-    public List<Funcionario> getFuncionario() {
-        return funcionario;
-    }
-
-    /**
-     * @param funcionario the funcionario to set
-     */
-    public void setFuncionario(List<Funcionario> funcionario) {
-        this.funcionario = funcionario;
-    }
+  
 }

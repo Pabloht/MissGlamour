@@ -6,31 +6,16 @@
 package Model;
 
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 /**
  *
  * @author PabloHenrique
  */
-@Entity
-@Table(name = "cor")
 public class Cor implements java.io.Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCor")
     private int idCor;
-    @Column(name = "descricaoCor")
     private String descricaoCor;
     
-    //@OneToMany (mappedBy="cor" , targetEntity=Produto.class)
-    //private List<Produto> produto;
-
     /**
      * @return the idCor
      */

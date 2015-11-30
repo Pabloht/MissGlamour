@@ -39,7 +39,7 @@ public class MarcaServ extends HttpServlet {
             try {
                 Marca m = new Marca();
                 m.setDescricaoMarca(descricao);
-                new MarcaDao().incluirMarca(m);
+                MarcaDao.incluirMarca(m);
             } catch (Exception e) {
                 
             }

@@ -7,49 +7,24 @@ package Model;
 
 import java.sql.Date;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
 
 /**
  *
  * @author PabloHenrique
  */
-@Entity
-@Table(name = "venda")
 public class Venda implements java.io.Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idVenda")
     private int idVenda;
-    @Column(name = "dataVenda")
     private Date dataVenda;
-    @Column(name = "valorFrete")
     private double valorFrete;
-    @Column(name = "valorDesconto")
     private double valorDesconto;
-    @Column(name = "valorTotalProduto")
     private double valorTotalProduto;
-    @Column(name = "valorTotal")
     private double valorTotal;
     
-    @ManyToOne
-    @JoinColumn(name = "idCliente")
     private Cliente cliente;
     
-//    @ManyToMany 
-//    @JoinTable(name="pagamentoVenda", 
-//    joinColumns=@JoinColumn(name="idVenda"),
-//    inverseJoinColumns=@JoinColumn(name="idCondicao"))
-//    @Column(name = "condicaoPagamento")
-//    private List<CondicaoPagamento> condicaoPagamento;
+
+    private List<CondicaoPagamento> condicaoPagamento;
 
     /**
      * @return the idVenda
@@ -157,14 +132,14 @@ public class Venda implements java.io.Serializable {
     /**
      * @return the condicaoPagamento
      */
-//    public List<CondicaoPagamento> getCondicaoPagamento() {
-//        return condicaoPagamento;
-//    }
-//
-//    /**
-//     * @param condicaoPagamento the condicaoPagamento to set
-//     */
-//    public void setCondicaoPagamento(List<CondicaoPagamento> condicaoPagamento) {
-//        this.condicaoPagamento = condicaoPagamento;
-//    }
+    public List<CondicaoPagamento> getCondicaoPagamento() {
+        return condicaoPagamento;
+    }
+
+    /**
+     * @param condicaoPagamento the condicaoPagamento to set
+     */
+    public void setCondicaoPagamento(List<CondicaoPagamento> condicaoPagamento) {
+        this.condicaoPagamento = condicaoPagamento;
+    }
 }

@@ -5,37 +5,20 @@
  */
 package Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
  *
  * @author PabloHenrique
  */
-@Entity
-@Table(name = "funcionario")
+
 public class Funcionario implements java.io.Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idFuncionario")
+
     private int idFuncionario;
-    @Column(name = "nomeFuncionario")
     private String nomeFuncionario;
-    @Column(name = "senha")
     private String senha;
-    @Column(name = "login")
     private String login;
-    @Column (name = "condicao")
     private boolean condicao;
     
-    @ManyToOne
-    @JoinColumn(name = "idFuncao")    
     private Funcao funcao;
 
     /**

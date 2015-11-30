@@ -20,60 +20,31 @@ import javax.persistence.Table;
  *
  * @author PabloHenrique
  */
-@Entity
-@Table(name = "cliente")
-public class Cliente implements java.io.Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCliente")
+
+public class Cliente implements java.io.Serializable {   
     private int idCliente;
-    @Column(name = "nomeCliente")
     private String nomeCliente;
-    @Column(name = "cpfCnpj")
-    private String cpfCnpj;
-    @Column(name = "rgIe")
+    private String cpfCnpj;    
     private String rgIe;
-    @Column(name = "rua")
     private String rua;
-    @Column(name = "cep")
-    private String cep;
-    @Column(name = "complemento")
+    private String cep;    
     private String complemento;
-    @Column(name = "numero")
     private int numero;
-    @Column(name = "telefoneResidencial")
     private String telefoneResidencial;
-    @Column(name = "celular")
     private String celular;
-    @Column(name = "telefoneRecado")
     private String telefoneRecado;
-    @Column(name = "email")
     private String email;
-    @Column(name = "login")
     private String login;
-    @Column(name = "senha")
     private String senha;
-    @Column(name = "condicao")
     private boolean condicao;
-    @Column(name = "tipoPessoa")
     private int tipoPessoa;
-    @Column (name = "promocao")
     private boolean promocao;
-    @Column(name = "sexo")
     private int sexo;
-    @Column(name = "bairro")
     private String bairro;
-    
-    @ManyToOne
-    @JoinColumn(name = "idEstado")
-    private Estado estado;
-    
-    @ManyToOne
-    @JoinColumn(name = "idCidade")
+    private Estado estado;   
     private Cidade cidade;
     
-    @OneToMany (mappedBy="cliente" , targetEntity=Venda.class)
-    private List<Venda> venda;
+    
 
     /**
      * @return the idCliente
@@ -330,21 +301,12 @@ public class Cliente implements java.io.Serializable {
     /**
      * @return the venda
      */
-    public List<Venda> getVenda() {
-        return venda;
-    }
-
-    /**
-     * @param venda the venda to set
-     */
-    public void setVenda(List<Venda> venda) {
-        this.venda = venda;
-    }
+    
 
     /**
      * @return the promocao
      */
-    public boolean isPromocao() {
+    public boolean getPromocao() {
         return promocao;
     }
 

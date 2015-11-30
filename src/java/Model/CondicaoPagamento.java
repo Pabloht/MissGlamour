@@ -7,41 +7,21 @@ package Model;
 
 
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+
 
 /**
  *
  * @author PabloHenrique
  */
-@Entity
-@Table(name = "condicaopagamento")
+
 public class CondicaoPagamento implements java.io.Serializable {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "idCondicao")
     private int idCondicao;
-    @Column (name = "descricao")
     private String descricao;
-    @Column (name = "desconto")
-    private int desconto;
-    @Column (name = "valorMinimo")
+    private int desconto;   
     private double valorMinimo;
-    @Column (name = "valorMinimoParcela")
     private double valorMinimoParcela;
-    @Column (name = "quantidadeParcela")
     private int quantidadeParcela;
     
-//    @Column(name = "venda")   
-//    @ManyToMany(mappedBy = "condicaopagamento", cascade = CascadeType.ALL)
-//    private List<Venda> venda;
-
     /**
      * @return the idCondicao
      */

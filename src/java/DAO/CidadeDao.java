@@ -5,16 +5,11 @@
  */
 package DAO;
 
-import javax.persistence.EntityManager;
-import util.EntityManagerUtil;
 
 /**
  *
  * @author PabloHenrique
  */
 public class CidadeDao {
-    private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
+
 }

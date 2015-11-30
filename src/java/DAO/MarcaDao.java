@@ -5,42 +5,47 @@
  */
 package DAO;
 
-import Model.Cor;
-import Model.Marca;
-import javax.persistence.EntityTransaction;
-import java.util.ArrayList;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.RollbackException;
 
-import util.EntityManagerUtil;
+import Model.Marca;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+
 /**
  *
  * @author PabloHenrique
  */
 public class MarcaDao {
-    private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
     
-    public void  incluirMarca(Marca m) throws RollbackException , Exception  {
-  
-		EntityManager em = null;
-        try {            
-            em = getEntityManager();           
-            em.getTransaction().begin();
-            em.persist(m);
-            em.getTransaction().commit();
-        } catch (Exception ex) {
-            try {
-                em.getTransaction().rollback();
-            } catch (Exception re) {
-                System.out.println(re);
-            }
+    
+    
+ 
+ public static Marca incluirMarca(Marca marca) throws Exception {
 
-            throw ex;	
-		
-	}
-    }
+
+        Connection conexao = DataHelper.GetConexao();
+
+
+        String sql = "Insert into marca (descricaoMarca) Values ((?))";
+
+        PreparedStatement statement = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+        statement.setString(1, marca.getDescricaoMarca());
+        
+        
+
+
+        statement.executeUpdate();
+
+        ResultSet generatedkeys = statement.getGeneratedKeys();
+
+
+        generatedkeys.next();
+        marca.setIdMarca(generatedkeys.getInt(1));
+
+        return marca;
+    } 
+	
 }
+

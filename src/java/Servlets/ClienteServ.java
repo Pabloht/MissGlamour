@@ -89,7 +89,7 @@ public class ClienteServ extends HttpServlet {
 //                } else {
 //                    c.setTipoPessoa(1);    
 //                }
-                new ClienteDao().incluirCliente(c);
+               ClienteDao.incluirCliente(c);
                 
             } catch (Exception e) {
                 

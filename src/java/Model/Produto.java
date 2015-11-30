@@ -5,63 +5,26 @@
  */
 package Model;
 
-import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 /**
  *
  * @author PabloHenrique
  */
-@Entity
-@Table (name = "produto")
 public class Produto implements java.io.Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "idProduto")
     private int idProduto;
-    @Column (name = "descricaoProduto")
     private String descricaoProduto;
-    @Column (name = "disponivel")
     private boolean disponivel;
-    @Column (name = "quantidade")
     private int quantidade;
-    @Column (name = "pesoCubico")
     private double pesoCubico;
-    @Column (name = "pesoFisico")
     private double pesoFisico;
-    @Column (name = "valorProduto")
     private double valorProduto;
-    
-    @ManyToOne
-    @JoinColumn(name = "idMarca")
     private Marca marca;
-    
-    @ManyToOne
-    @JoinColumn(name = "idCor")
     private Cor cor;
-    
-    @ManyToOne
-    @JoinColumn(name = "idSimilar")
     private Similar similar;
-    
-    @ManyToOne
-    @JoinColumn(name = "idTamanho")
     private Tamanho tamanho;
-    
-    @ManyToOne
-    @JoinColumn(name = "idPromocao")
     private Promocao promocao;
     
-//    @OneToMany (mappedBy="produto" , targetEntity=Foto.class)
-//    private List<Foto> foto;
 
     /**
      * @return the idProduto
@@ -220,14 +183,5 @@ public class Produto implements java.io.Serializable {
     /**
      * @return the foto
      */
-//    public List<Foto> getFoto() {
-//        return foto;
-//    }
-//
-//    /**
-//     * @param foto the foto to set
-//     */
-//    public void setFoto(List<Foto> foto) {
-//        this.foto = foto;
-//    }
+
 }
