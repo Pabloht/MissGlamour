@@ -24,39 +24,23 @@ public class MarcaDao {
         return entityManager;
     }
     
-    public void  incluirMarca(Marca m) throws RollbackException , Exception {
-        
-		String retorno = "Marca gravada com sucesso";
-		
-		//EntityTransaction tx = getEntityManager().getTransaction();
-		 EntityManager em = null;
-        try {
-            //tx.begin();
-            em = getEntityManager();
-            //getEntityManager().persist(m);
+    public void  incluirMarca(Marca m) throws RollbackException , Exception  {
+  
+		EntityManager em = null;
+        try {            
+            em = getEntityManager();           
             em.getTransaction().begin();
-            //tx.commit();
             em.persist(m);
             em.getTransaction().commit();
         } catch (Exception ex) {
             try {
                 em.getTransaction().rollback();
             } catch (Exception re) {
-                
+                System.out.println(re);
             }
-//            System.out.println("erro " + t);
-//            t.printStackTrace();
-//            
-//            tx.rollback();
-            throw ex;
-            
-       // } finally {
-            
-       // }
-		
-		
+
+            throw ex;	
 		
 	}
     }
 }
-

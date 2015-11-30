@@ -4,9 +4,17 @@
         <servlet-name>MarcaServ</servlet-name>
         <servlet-class>Servlets.MarcaServ</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClienteServ</servlet-name>
+        <servlet-class>Servlets.ClienteServ</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MarcaServ</servlet-name>
         <url-pattern>/MarcaServ</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClienteServ</servlet-name>
+        <url-pattern>/ClienteServ</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,6 +22,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>cadastroOnline.html</welcome-file>
     </welcome-file-list>
 </web-app>

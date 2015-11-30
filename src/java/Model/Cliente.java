@@ -59,6 +59,10 @@ public class Cliente implements java.io.Serializable {
     private int tipoPessoa;
     @Column (name = "promocao")
     private boolean promocao;
+    @Column(name = "sexo")
+    private int sexo;
+    @Column(name = "bairro")
+    private String bairro;
     
     @ManyToOne
     @JoinColumn(name = "idEstado")
@@ -349,5 +353,33 @@ public class Cliente implements java.io.Serializable {
      */
     public void setPromocao(boolean promocao) {
         this.promocao = promocao;
+    }
+
+    /**
+     * @return the sexo
+     */
+    public int getSexo() {
+        return sexo;
+    }
+
+    /**
+     * @param sexo the sexo to set
+     */
+    public void setSexo(int sexo) {
+        this.sexo = sexo;
+    }
+
+    /**
+     * @return the bairro
+     */
+    public String getBairro() {
+        return bairro;
+    }
+
+    /**
+     * @param bairro the bairro to set
+     */
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 }
