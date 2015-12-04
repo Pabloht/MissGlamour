@@ -25,25 +25,13 @@ public class MarcaDao {
 
 
         Connection conexao = DataHelper.GetConexao();
-
-
         String sql = "Insert into marca (descricaoMarca) Values ((?))";
-
         PreparedStatement statement = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-
         statement.setString(1, marca.getDescricaoMarca());
-        
-        
-
-
         statement.executeUpdate();
-
         ResultSet generatedkeys = statement.getGeneratedKeys();
-
-
         generatedkeys.next();
         marca.setIdMarca(generatedkeys.getInt(1));
-
         return marca;
     } 
 	

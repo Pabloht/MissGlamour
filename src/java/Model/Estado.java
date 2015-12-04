@@ -16,6 +16,7 @@ public class Estado implements java.io.Serializable {
     private int idEstado;
     private String nomeEstado;
     private String regiaoEstado;
+    private String ufEstado;
     
         
 
@@ -59,6 +60,20 @@ public class Estado implements java.io.Serializable {
      */
     public void setRegiaoEstado(String regiaoEstado) {
         this.regiaoEstado = regiaoEstado;
+    }
+
+    /**
+     * @return the ufEstado
+     */
+    public String getUfEstado() {
+        return ufEstado;
+    }
+
+    /**
+     * @param ufEstado the ufEstado to set
+     */
+    public void setUfEstado(String ufEstado) {
+        this.ufEstado = ufEstado;
     }
 
     /**

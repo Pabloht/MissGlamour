@@ -13,45 +13,10 @@ and open the template in the editor.
          <link href="CSS/3-col-portfolio.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Miss Glamour</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Contato</a>
-                    </li>
-                    <li>
-                        <a href="#">Informações</a>
-                    </li>
-                    <li>
-                        <a href="adm.html">Adm</a>
-                    </li>
-                    <li>
-                        <input type="text" placeholder="login" id="campoLogin"> 
-                    </li>
-                    <li>
-                        <input type="text" placeholder="senha" id="campoSenha"> 
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+        <form action="checarLogin.jsp" method="post">
+        <input type="text" placeholder="Login" name= "login">
+        <input type="text" placeholder="Senha" name= "senha">
+        <input value="enviar" type="submit">
+        </form>
     </body>
 </html>

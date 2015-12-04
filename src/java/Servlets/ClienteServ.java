@@ -5,7 +5,9 @@
  */
 package Servlets;
 
+import DAO.CidadeDao;
 import DAO.ClienteDao;
+import DAO.EstadoDao;
 import DAO.MarcaDao;
 import Model.Cidade;
 import Model.Cliente;
@@ -13,6 +15,7 @@ import Model.Estado;
 import Model.Marca;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,6 +61,13 @@ public class ClienteServ extends HttpServlet {
             String pessoa = req.getParameter("pessoa");          
             
             try {
+                Estado e = new Estado();
+                Cidade ci = new Cidade();
+                ci = new CidadeDao().getAllCidade(cidade);
+                if(estado.equals(ci.getEstado().getUfEstado())) {
+                    e = new EstadoDao().getEstado(estado);
+                    
+                }
                 Cliente c = new Cliente();
                 c.setNomeCliente(nome);
                 c.setCpfCnpj(cpf);
@@ -70,25 +80,28 @@ public class ClienteServ extends HttpServlet {
                 c.setComplemento(complemento);
                 c.setTelefoneResidencial(telefone);
                 c.setCelular(celular);
-                c.setTelefoneResidencial(telefoneRecado);
+                c.setTelefoneRecado(telefoneRecado);
                 c.setEmail(email);
                 c.setLogin(login);
                 c.setSenha(senha);
-                c.setSexo(0);
-                c.setPromocao(false);
-                Estado e = new Estado();
                 
-                Cidade ci = new Cidade();
+                c.setPromocao(false);
+                
+                
                 c.setEstado(e);
                 c.setCidade(ci);
                 c.setCondicao(true);
-                c.setTipoPessoa(0);
                 c.setBairro(bairro);
-//                if(pessoa.equals("fisica")) {
-//                    c.setTipoPessoa(0);
-//                } else {
-//                    c.setTipoPessoa(1);    
-//                }
+                if(sexo.equals("masculino")) {
+                    c.setSexo(0);
+                } else {
+                    c.setSexo(1);
+                }
+                if(pessoa.equals("Pessoa Física")) {
+                    c.setTipoPessoa(0);
+                } else {
+                    c.setTipoPessoa(1);    
+                }
                ClienteDao.incluirCliente(c);
                 
             } catch (Exception e) {

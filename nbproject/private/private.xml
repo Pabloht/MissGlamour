@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/src/java/Model/Cliente.java</file>
-            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/src/java/Servlets/ClienteServ.java</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/web/home.html</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/web/deuCerto.html</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/web/deuCerto.jsp</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/web/checarLogin.jsp</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/web/cadastroCliente.jsp</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/src/java/DAO/EstadoDao.java</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/web/CSS/style.css</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/src/java/DAO/CidadeDao.java</file>
+            <file>file:/C:/Users/PabloHenrique/Documents/NetBeansProjects/MissGlamour/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>
