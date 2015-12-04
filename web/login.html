@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Cadastro Cliente</title>
+        <title>Tela Principal</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <link href="CSS/login.css" rel="stylesheet" type="text/css" /> 
@@ -23,34 +23,66 @@ and open the template in the editor.
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Miss Glamour</a>
+                <!--<a class="navbar-brand" href="login.html">Miss Glamour</a> -->
+                <p>
+                <img src="imagens/slogan_converted.jpg"
+                width="150" height="70">
+                </p>
             </div>
+             
+            <!-- BOTÃO FACEBOOK -->
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+              fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+            <div id="botaoFacebook" class="fb-like" data-href="https://www.facebook.com/missglamourstore02/" 
+                 data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
+            </div>
+            
+            <!-- BOTÃO TWITTER -->
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://www.facebook.com/missglamourstore02/?fref=ts" data-text="Confira nossas promoções!!" data-size="large" data-related="missglamour01" data-hashtags="passaNois">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            
+            
+            <!-- BOTÃO DE SEGUIR NO TWITTER -->
+            <a href="https://twitter.com/missglamour01" id="shareTwitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @missglamour01</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+            if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="login.html">Home</a>
                     </li>
                     <li>
-                        <a href="#">Contato</a>
+                        <a href="informacoes.html">Informações</a>
+                    </li>
+                     <li>
+                        <a href="contatoForm.html">Entre em Contato</a>
                     </li>
                     <li>
-                        <a href="#">Informações</a>
+                        <a href="cadastroProduto.html">Cadastro de Produtos</a>
                     </li>
                     <li>
-                        <a href="adm.html">Adm</a>
+                        <a href="cadastroCliente.html">Cadastrar Cliente</a>
                     </li>
                     <li>
-                        <input type="text" placeholder="login" id="campoLogin"> 
-                    </li>
-                    <li>
-                        <input type="text" placeholder="senha" id="campoSenha"> 
+                        <a href="cadastroPromocao.html">Cadastrar Promocao</a>
                     </li>
                 </ul>
             </div>
-            
+
             <!-- /.navbar-collapse -->
         </div>
+            
         <!-- /.container -->
     </nav>
     </body>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <title>--Formulário Contato--</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+        <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+        <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+        <script src="js/jquery-func.js" type="text/javascript"></script>
+    </head>
+    
+    
+    <body>
+
+        <form name="meu_form">
+            
+            <h1>Entre em contato</h1> 
+            <br>
+            <br>
+            <br>
+            
+            <div class="form-group">
+            <p class="nome">
+                <label for="nome"><font size="3">Nome:</font></label> </p>
+                <input type="text" class="form-control" id="nomeid" placeholder="Escreva seu nome" required="required" name="nome" />
+                </div>
+            <br>
+            
+            <div class="form-group">
+                <label for="fone"><font size="3">Fone:</font></label> </p>
+            <p class="fone"> 
+                <input type="text" id="foneid" class="form-control" placeholder="Escreva seu telefone" name="fone" />
+               </div>
+            <br>
+            
+            
+             <div class="form-group">
+                 <label for="email"><font size="3">Email:</font></label> </p>
+            <p> <input type="email" id="emailid" class="form-control" placeholder="Escreva seu e-mail" name="email" /> 
+                 </div>
+            <br>
+            
+            <div class="form-group">
+             <p> <textarea class="form-control" placeholder="Deixe sua opnião"> </textarea> </p>
+            </div>
+            <br>
+            
+                <p class="submit"> <input type="submit" class="btn btn-default" onclick="Enviar();" value="Enviar" />
+                </p> 
+            
+        </form>
+        
+        <div class="cols">
+      <div class="cl">&nbsp;</div>
+      
+      
+      <!-- Espaço para acesso ao Instagram -->
+      <div class="col">
+        <h3 class="ico ico1">Confira nosso Instagram</h3>
+        <p>Acesse nosso Instagram para conferir novidades!!</p>
+        <br>
+        <style>.ig-b- { display: inline-block; }
+        .ig-b- img { visibility: hidden; }
+        .ig-b-:hover { background-position: 0 -60px; } .ig-b-:active { background-position: 0 -120px; }
+        .ig-b-v-24 { width: 137px; height: 24px; background: url(//badges.instagram.com/static/images/ig-badge-view-sprite-24.png) no-repeat 0 0; }
+        @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+        .ig-b-v-24 { background-image: url(//badges.instagram.com/static/images/ig-badge-view-sprite-24@2x.png); background-size: 160px 178px; } }</style>
+        <a href="http://instagram.com/missglamour_store?ref=badge" class="ig-b- ig-b-v-24"><img src="//badges.instagram.com/static/images/ig-badge-view-24.png" alt="Instagram" /></a>
+        
+      </div>
+      
+      <!-- Espaço para compartilhar Facebook-->
+      <div class="col">
+        <h3 class="ico ico2">Curta e Compartilhe no Facebook</h3>
+        <p>Nos ajude a divulgar a loja curtindo e compartilhando no Facebook para seus amigos!!</p>
+                    <!-- BOTÃO FACEBOOK -->
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+              fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+            <div id="botaoFacebook" class="fb-like" data-href="https://www.facebook.com/missglamourstore02/" 
+                 data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
+            </div>
+      </div>
+      
+      <!-- Espaço para seguir no twitter-->
+      <div class="col">
+        <h3 class="ico ico3">Siga-nos no Twitter</h3>
+        <p>Siga-nos no Twitter para ficar por dentro de promoções e de roupas e acessórios novos!!</p>
+        <br>
+        <!-- BOTÃO DE SEGUIR NO TWITTER -->
+            <a href="https://twitter.com/missglamour01" id="shareTwitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @missglamour01</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+            if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+     
+      <!-- Espaço para compartilhar twits-->
+      <div class="col col-last">
+        <h3 class="ico ico4">Twite Sua Opinião</h3>
+        <p>Use este botão para twittar algo sobre sua experiência com a loja.</p>
+        <br>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://www.facebook.com/missglamourstore02/?fref=ts" data-text="Twite algo!!" data-size="large" data-related="missglamour01" data-hashtags="passaNois">Tweet</a>
+            
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        
+      </div>
+      <div class="cl">&nbsp;</div>
+    </div>
+        
+        <div id="footer">
+          <p class="left"> <a href="TesteBolado.html">Home</a> <span>|</span> <a href="contatoForm">Entre em contato</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="informacoes.html">Contato</a> </p>
+          <p class="right"> &copy; 2015 Miss Glamour. Design by <a href="http://fean.com.br">fean.com.br</a> </p>
+        </div>
+        
+    </body> 
+</html>
