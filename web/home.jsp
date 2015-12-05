@@ -1,24 +1,29 @@
+<%-- 
+    Document   : home
+    Created on : 05/12/2015, 00:56:21
+    Author     : PabloHenrique
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
-        <link rel="stylesheet" href="CSS/cadastroCliente.css" type="text/css" media="all" />
 <!--<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />-->
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
- 
+        <title>JSP Page</title>
     </head>
     <body>
-        <div class="shell">
+          <%
+            session = request.getSession();
+            String nomeCliente = (String) session.getAttribute("nomeClienteAutenticado");
+            %>
+            
+            <!-- Shell -->
+<div class="shell">
   <!-- Header -->
   <div id="header">
     <h1 id="logo"><a href="#">Miss Glamour</a></h1>
@@ -34,41 +39,140 @@ and open the template in the editor.
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="home.html" >Home</a></li>
+        <li><a href="home.html" class="active">Home</a></li>
         <li><a href="contatoForm.html" >Fale conosco</a></li>
-        <li><a href="informacoes.html" >Informações</a></li>        
-        <li><a href="cadastroCliente.jsp" >Criar uma Conta</a></li>
-        <li><a href="login.html" class="active"  >Logar</a></li>
+        <li><a href="informacoes.html" >Informações</a></li>
+        <li><a href="perfilCliente.jsp"  > <%   out.print(nomeCliente);    %>  </a></li>
+        <li><a href="logout.jsp" >Sair</a></li>
       </ul>
     </div>
     <!-- End Navigation -->
   </div>
   <!-- End Header -->
- 
-         <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h25 class="page-header" id="titulologin">Login de Cliente
-                    <small></small>
-                </h25>
-            </div>
-        </div>
+  <!-- Main -->
   <div id="main">
-      <form action="checarLogin.jsp" method="post">
-      <div id="telaLogin">
-      <div class="form-group" id="divlogin2">
-      <input type="text" class="form-control"  id="campologin2" placeholder="Login..." name= "login"> 
+    <div class="cl">&nbsp;</div>
+    <!-- Content -->
+    <div id="content">
+      <!-- Content Slider -->
+      <div id="slider" class="box">
+        <div id="slider-holder">
+          <ul>
+            <li><a href="#"><img src="CSS/imagens/calca1.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="CSS/imagens/calca2.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="CSS/imagens/calca3.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="CSS/imagens/saia1.jpg" alt="" /></a></li>
+          </ul>
+        </div>
+        <div id="slider-nav"> <a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> </div>
       </div>
-      <div class="form-group" id="divsenha2">
-      <input type="password" class="form-control" id="camposenha2" placeholder="Senha..." name= "senha"> 
+      <!-- End Content Slider -->   
+      <!-- Products -->
+      <div class="products">
+        <div class="cl">&nbsp;</div>
+        <ul>
+          <li> <a href="#"><img src="CSS/imagens/mid1.jpg" alt="" /></a>
+            <div class="product-info">
+              <h3>-- LANÇAMENTO --</h3>
+              
+              <div class="product-desc">
+                <h4>Feminino</h4>
+                <p>Calça Jeans<br />
+                  @Lança Perfume</p>
+                <strong class="price">R$200.00</strong> 
+                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521826170621/?type=3&theater" data-layout="button"></div>
+              </div>
+            </div>
+          </li>
+            
+          <li> <a href="#"><img src="CSS/imagens/mid5.jpg" alt="" /></a>
+            <div class="product-info">
+              <h3>-- LANÇAMENTO --</h3>
+              <div class="product-desc">
+                <h4>Feminino</h4>
+                <p>Calça Jeans<br />
+                  @Lança Perfume</p>
+                <strong class="price">R$200.00</strong>
+                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521642837306/?type=3&theater" data-layout="button"></div>
+              </div>
+            </div>
+          </li>
+            
+          <li class="last"> <a href="#"><img src="CSS/imagens/mid3.jpg" alt="" /></a>
+            <div class="product-info">
+              <h3>-- LANÇAMENTO --</h3>
+              <div class="product-desc">
+                <h4>Feminino</h4>
+                <p>Calça Jeans<br />
+                  @Lança Perfume</p>
+                <strong class="price">R$200.00</strong> 
+                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521732837297/?type=3&theater" data-layout="button"></div>
+              </div>
+            </div>
+          </li>
+            
+        </ul>
+        <div class="cl">&nbsp;</div>
       </div>
-      <input type="submit" value="Enviar" id="botaologar" class="btn btn-default" name= "action">
-      <br>
-      <br>
-      <li><a href="#">Esqueci minha senha </li>
-      </form>
+      <!-- End Products -->
+    </div>
+    <!-- End Content -->
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <!-- Search -->
+      <div class="box search">
+        <h2>Procure por <span></span></h2>
+        <div class="box-content">
+          <form action="#" method="post">
+            <label>Palavra-chave</label>
+            <input type="text" class="field" />
+            <label>Categoria</label>
+            <select class="field">
+              <option value="">-- Selecione a Categoria --</option>
+            </select>
+            <div class="inline-field">
+              <label>Preço</label>
+              <select class="field small-field">
+                <option value="">$100</option>
+              </select>
+              <label>to:</label>
+              <select class="field small-field">
+                <option value="">$200</option>
+              </select>
+            </div>
+            <input type="submit" class="search-submit" value="Procurar" />
+            <p> <a href="contatoForm.html" class="bul">Entre em Contato/Suporte</a> </p>
+          </form>
+        </div>
       </div>
+      <!-- End Search -->
+      <!-- Categories -->
+      <div class="box categories">
+        <h2>Categorias <span></span></h2>
+        <div class="box-content">
+          <ul>
+            <li><a href="painelCalças.html"> Calças </a></li>
+            <li><a href="painelSaias.html"> Saias </a></li>
+            <li><a href="#"> Casacos </a></li>
+            <li><a href="#"> Blusas </a></li>
+            <li><a href="#"> Jaquetas </a></li>
+            <li><a href="#"> @Lança Perfume </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li class="last"><a href="#"> </a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Categories -->
+    </div>
+    <!-- End Sidebar -->
+    <div class="cl">&nbsp;</div>
   </div>
+  <!-- End Main -->
+  <!-- Side Full -->
   <div class="side-full">
     <!-- More Products -->
     <div class="more-products">
@@ -168,12 +272,14 @@ and open the template in the editor.
     </div>
     <!-- End Text Cols -->
   </div>
+  <!-- End Side Full -->
   <!-- Footer -->
         <div id="footer">
           <p class="left"> <a href="home.html">Home</a> <span>|</span> <a href="contatoForm">Fale conosco</a> <span>| <a href="informacoes.html">Informações</a> </p>
           <p class="right"> &copy; 2015 Miss Glamour. Design by <a href="http://fean.com.br">fean.com.br</a> </p>
         </div>
   <!-- End Footer -->
-        </div>
+</div>
+<!-- End Shell -->
     </body>
 </html>

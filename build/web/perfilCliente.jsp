@@ -1,24 +1,54 @@
+<%-- 
+    Document   : perfilCliente
+    Created on : 05/12/2015, 01:03:41
+    Author     : PabloHenrique
+--%>
+
+<%@page import="Model.Cliente"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title> Sua conta </title>
+         <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
         <link rel="stylesheet" href="CSS/cadastroCliente.css" type="text/css" media="all" />
 <!--<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />-->
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
- 
     </head>
     <body>
-        <div class="shell">
+        <%    
+         session = request.getSession();
+         Cliente cliente = new Cliente();
+           cliente.setNomeCliente((String) session.getAttribute("nomeClienteAutenticado"));
+            cliente.setCpfCnpj((String) session.getAttribute("cpfCnpjAutenticado"));
+            cliente.setRgIe((String) session.getAttribute("rgIeAutenticado"));
+            cliente.setRua((String) session.getAttribute("ruaAutenticado"));
+            cliente.setCep((String) session.getAttribute("cepAutenticado"));
+            cliente.setNumero((Integer) session.getAttribute("numeroAutenticado"));
+            cliente.setComplemento((String) session.getAttribute("complementoAutenticado"));
+            cliente.setTipoPessoa((Integer) session.getAttribute("tipoPessoaAutenticado"));
+            cliente.setCondicao((Boolean) session.getAttribute("condicaoAutenticado"));
+            cliente.setTelefoneResidencial((String) session.getAttribute("telefoneResidencialAutenticado"));
+            cliente.setCelular((String) session.getAttribute("celularAutenticado"));
+            cliente.setTelefoneRecado((String) session.getAttribute("telefoneRecadoAutenticado"));    
+            cliente.setLogin((String) session.getAttribute("loginAutenticado"));
+            cliente.setSenha((String) session.getAttribute("senhaAutenticado"));
+            cliente.setEmail((String) session.getAttribute("emailAutenticado"));
+            cliente.setPromocao((Boolean) session.getAttribute("promocaoAutenticado"));
+            cliente.setSexo((Integer) session.getAttribute("sexoAutenticado"));
+            cliente.setBairro((String) session.getAttribute("bairroAutenticado"));
+            String sexo;
+            if(cliente.getSexo() == 0) {
+                sexo = "Masculino";
+            }    else {
+                sexo = "Feminino";
+            }
+        %>
+        
+         <div class="shell">
   <!-- Header -->
   <div id="header">
     <h1 id="logo"><a href="#">Miss Glamour</a></h1>
@@ -34,11 +64,11 @@ and open the template in the editor.
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="home.html" >Home</a></li>
+        <li><a href="home.jsp" >Home</a></li>
         <li><a href="contatoForm.html" >Fale conosco</a></li>
-        <li><a href="informacoes.html" >Informações</a></li>        
-        <li><a href="cadastroCliente.jsp" >Criar uma Conta</a></li>
-        <li><a href="login.html" class="active"  >Logar</a></li>
+        <li><a href="informacoes.html" >Informações</a></li>
+        <li><a href="#" class="active"  ><% out.print(cliente.getNomeCliente());   %></a></li>
+        <li><a href="logout.jsp" >Sair</a></li>
       </ul>
     </div>
     <!-- End Navigation -->
@@ -48,28 +78,29 @@ and open the template in the editor.
          <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
-                <h25 class="page-header" id="titulologin">Login de Cliente
+                <h25 class="page-header" id="titulologin"><% out.print(cliente.getNomeCliente());   %>
                     <small></small>
                 </h25>
             </div>
+                    <br>
+                    
+                    <div id="dados">
+                        <fieldset>
+                            <legend><h4>Dados Pessoais:</h4></legend>
+                            <br>
+           <div class="form-group" id="divcpf">
+            <label for="exampleInputPassword1">CPF/CNPJ</label>
+            <input type="text" class="form-control" id="campocpf"  name= "cpf" value="<% out.print(cliente.getCpfCnpj()); %>" readonly>
         </div>
-  <div id="main">
-      <form action="checarLogin.jsp" method="post">
-      <div id="telaLogin">
-      <div class="form-group" id="divlogin2">
-      <input type="text" class="form-control"  id="campologin2" placeholder="Login..." name= "login"> 
-      </div>
-      <div class="form-group" id="divsenha2">
-      <input type="password" class="form-control" id="camposenha2" placeholder="Senha..." name= "senha"> 
-      </div>
-      <input type="submit" value="Enviar" id="botaologar" class="btn btn-default" name= "action">
-      <br>
-      <br>
-      <li><a href="#">Esqueci minha senha </li>
-      </form>
-      </div>
-  </div>
-  <div class="side-full">
+        <div class="form-group" id="divrg" >
+            <label for="exampleInputPassword1">RG/Ie</label>
+            <input type="text" class="form-control" id="camporg" name= "rg" value="<% out.print(cliente.getRgIe()); %>" readonly>
+        </div>
+            Sexo : <% out.print(sexo);   %>
+                        </fieldset>
+        </div>
+                        
+         <div class="side-full">
     <!-- More Products -->
     <div class="more-products">
       <div class="more-products-holder">
@@ -175,5 +206,6 @@ and open the template in the editor.
         </div>
   <!-- End Footer -->
         </div>
+        
     </body>
 </html>

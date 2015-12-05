@@ -45,8 +45,8 @@
                 session.setAttribute("sexoAutenticado", cliente.getSexo());
                 session.setAttribute("bairroAutenticado", cliente.getBairro());
                 session.setAttribute("cidadeAutenticado", cliente.getCidade());
-                session.setAttribute("estadoAutenticado", cliente.getEstado());
-                response.sendRedirect("deuCerto.jsp");
+                session.setAttribute("estadoAutenticado", cliente.getEstado().getIdEstado());
+                response.sendRedirect("home.jsp");
                 
             } else {
                 out.println("Login ou senha invalidos");
