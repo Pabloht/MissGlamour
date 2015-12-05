@@ -63,8 +63,9 @@ new dgCidadesEstados(document.getElementById('estado'), document.getElementById(
     <!-- End Navigation -->
   </div>
   <!-- End Header -->
-    
+  <div id="main">
          <!-- Page Header -->
+         <div id="content">
         <div class="row">
             <div class="col-lg-12">
                 <h25 class="page-header">Cadastro de Cliente
@@ -78,9 +79,13 @@ new dgCidadesEstados(document.getElementById('estado'), document.getElementById(
     <!-- Formulario -->
     <br>
     <br>
+    <div id="dadoscadastrar">
+        <fieldset id="fieldsetcadastro">
+                            <legend></legend>
+                            <br>
     <form action="ClienteServ" method="post" onsubmit="return validar(this);">
-        <div class="form-group">
-            <label for="exampleInputEmail1">Nome</label>
+        <div class="form-group" >
+            <label for="exampleInputEmail1" id="letra">Nome</label>
             <input type="text" class="form-control" id="camponome" name= "nome" placeholder="Nome">   
         </div>
         
@@ -88,10 +93,10 @@ new dgCidadesEstados(document.getElementById('estado'), document.getElementById(
         <div class="radiobox" name="pessoa">
             
             <label>
-                <input name="pessoa" type="radio" id="radiofisica" value="Pessoa Física" > Pessoa Física
+                <input name="pessoa" type="radio" id="radio" value="Pessoa Física" > Pessoa Física
             </label>
             <label>
-            <input type="radio" name="pessoa" id="radiojuridica" value="Pessoa Jurídica" > Pessoa Jurídica
+            <input type="radio" name="pessoa" id="radio" value="Pessoa Jurídica" > Pessoa Jurídica
             </label>
             <br>
             <br>
@@ -108,10 +113,10 @@ new dgCidadesEstados(document.getElementById('estado'), document.getElementById(
         <div class="radiobox" name="sexo">
             
             <label>
-                <input name="sexo" type="radio" value="masculino"> Masculino
+                <input name="sexo" type="radio" id="radio" value="masculino"> Masculino
             </label>
             <label>
-            <input type="radio" name="sexo" value="feminino"> Feminino
+            <input type="radio" name="sexo" id="radio" value="feminino"> Feminino
             </label>
             
             <br>
@@ -135,7 +140,7 @@ new dgCidadesEstados(document.getElementById('estado'), document.getElementById(
         <br>
         
         <div class="form-group" id="divendereco">
-            <label for="exampleInputPassword1">Endereço</label>
+            <label for="exampleInputPassword1" id="letra">Endereço</label>
             <input type="text" class="form-control" id="campoendereco" name= "endereco" placeholder="R. Nome da sua rua">
         </div>
         
@@ -185,10 +190,68 @@ new dgCidadesEstados(document.getElementById('estado'), document.getElementById(
         
         
         
-        <button type="submit" name="action" value="cadastrar" class="btn btn-default">Enviar</button>
+        <button type="submit" name="action" value="cadastrar" id="botaocadastrar" class="btn btn-default">Enviar</button>
     </form>
+                            <br>
+                            </fieldset>
+        </div>
     <br>
     <!-- /.form -->
+    </div>
+    <div id="sidebar">
+      <!-- Search -->
+      <div class="box search">
+        <h2>Procure por <span></span></h2>
+        <div class="box-content">
+          <form action="#" method="post">
+            <label>Palavra-chave</label>
+            <input type="text" class="field" />
+            <label>Categoria</label>
+            <select class="field">
+              <option value="">-- Selecione a Categoria --</option>
+            </select>
+            <div class="inline-field">
+              <label>Preço</label>
+              <select class="field small-field">
+                <option value="">$100</option>
+              </select>
+              <label>to:</label>
+              <select class="field small-field">
+                <option value="">$200</option>
+              </select>
+            </div>
+            <input type="submit" class="search-submit" value="Procurar" />
+            <p> <a href="contatoForm.html" class="bul">Entre em Contato/Suporte</a> </p>
+          </form>
+        </div>
+      </div>
+      <!-- End Search -->
+      <!-- Categories -->
+      <div class="box categories">
+        <h2>Categorias <span></span></h2>
+        <div class="box-content">
+          <ul>
+            <li><a href="painelCalças.html"> Calças </a></li>
+            <li><a href="painelSaias.html"> Saias </a></li>
+            <li><a href="#"> Casacos </a></li>
+            <li><a href="#"> Blusas </a></li>
+            <li><a href="#"> Jaquetas </a></li>
+            <li><a href="#"> @Lança Perfume </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li class="last"><a href="#"> </a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Categories -->
+    </div>
+    <!-- End Sidebar -->
+    <div class="cl">&nbsp;</div>
+  </div>     
+    
     <div class="side-full">
     <!-- More Products -->
     <div class="more-products">
@@ -293,7 +356,7 @@ new dgCidadesEstados(document.getElementById('estado'), document.getElementById(
           <p class="left"> <a href="home.html">Home</a> <span>|</span> <a href="contatoForm">Fale conosco</a> <span>| <a href="informacoes.html">Informações</a> </p>
           <p class="right"> &copy; 2015 Miss Glamour. Design by <a href="http://fean.com.br">fean.com.br</a> </p>
         </div>
-    
+    </div>
    
     </div>
     </body>

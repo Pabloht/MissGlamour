@@ -181,6 +181,20 @@ public class Produto implements java.io.Serializable {
     }
 
     /**
+     * @return the promocao
+     */
+    public Promocao getPromocao() {
+        return promocao;
+    }
+
+    /**
+     * @param promocao the promocao to set
+     */
+    public void setPromocao(Promocao promocao) {
+        this.promocao = promocao;
+    }
+
+    /**
      * @return the foto
      */
 

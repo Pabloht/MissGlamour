@@ -17,8 +17,8 @@ public class Funcionario implements java.io.Serializable {
     private String nomeFuncionario;
     private String senha;
     private String login;
+    private String emailFuncionario;
     private boolean condicao;
-    
     private Funcao funcao;
 
     /**
@@ -103,5 +103,19 @@ public class Funcionario implements java.io.Serializable {
      */
     public void setFuncao(Funcao funcao) {
         this.funcao = funcao;
+    }
+
+    /**
+     * @return the emailFuncionario
+     */
+    public String getEmailFuncionario() {
+        return emailFuncionario;
+    }
+
+    /**
+     * @param emailFuncionario the emailFuncionario to set
+     */
+    public void setEmailFuncionario(String emailFuncionario) {
+        this.emailFuncionario = emailFuncionario;
     }
 }

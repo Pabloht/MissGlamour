@@ -1,85 +1,96 @@
+<%-- 
+    Document   : perfilFuncionario
+    Created on : 05/12/2015, 19:33:40
+    Author     : PabloHenrique
+--%>
+
+<%@page import="Model.Funcionario"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       <title> Sua conta </title>
+         <link rel="stylesheet" href="CSS/perfilCliente.css" type="text/css" media="all" />
         <link rel="stylesheet" href="CSS/cadastroCliente.css" type="text/css" media="all" />
 <!--<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />-->
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
- 
     </head>
     <body>
+        <%  
+            session = request.getSession();
+            Funcionario funcionario = new Funcionario();
+            funcionario.setIdFuncionario((Integer) session.getAttribute("idFuncionarioAutenticado"));
+            funcionario.setNomeFuncionario((String) session.getAttribute("nomeFuncionarioAutenticado"));
+            funcionario.setLogin((String) session.getAttribute("loginAutenticado"));
+            funcionario.setSenha((String) session.getAttribute("senhaAutenticado"));
+            funcionario.setEmailFuncionario((String) session.getAttribute("emailFuncionarioAutenticado"));
+            
+        %>
         <div class="shell">
   <!-- Header -->
   <div id="header">
     <h1 id="logo"><a href="#">Miss Glamour</a></h1>
     
-    <!-- Cart -->
-    <div id="cart"> <a href="#" class="cart-link">Seu carrinho</a>
-        
-      <div class="cl">&nbsp;</div>
-      <span> Peças: <strong>0</strong></span> &nbsp;&nbsp; <span>Total: <strong>R$0.00</strong></span> 
-    </div>
-    <!-- End Cart -->
-    
+   
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="home.html" >Home</a></li>
-        <li><a href="contatoForm.html" >Fale conosco</a></li>
-        <li><a href="informacoes.html" >Informações</a></li>        
-        <li><a href="cadastroCliente.jsp" >Criar uma Conta</a></li>
-        <li><a href="login.html" class="active"  >Logar</a></li>
+        <li><a href="home.jsp" >Home</a></li>
+        <li><a href="contatoForm.html" >Cadastrar Produto</a></li>
+        <li><a href="informacoes.html" >Cadastrar Promocao</a></li>
+        <li><a href="cadastroCliente.jsp" >Atendimento ao Cliente</a></li>
+        <li><a href="cadastroCliente.jsp" >Funcionários</a></li>
+        <li><a href="perfilFuncionario.jsp" class="active" ><% out.print(funcionario.getNomeFuncionario());        %></a></li>
+        <li><a href="logout.jsp">Sair</a></li>
       </ul>
     </div>
     <!-- End Navigation -->
   </div>
   <!-- End Header -->
- <div id="main">
+ <div id="main">            
          <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
-                <h25 class="page-header" id="titulologin">Login de Cliente
+                <h25 class="page-header" id="titulologin"><% out.print(funcionario.getNomeFuncionario());   %>
                     <small></small>
                 </h25>
             </div>
+                    <br>
+        
+                    <div id="content">
+                        <div id="dados">
+                        <fieldset>
+                            <legend><h4>Dados Pessoais:</h4></legend>
+                            <br>
+            <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1" id="telaPerfil">Login</label>
+            <input type="text" class="form-control" id="campoesquerda"  name= "login" value="<% out.print(funcionario.getLogin()); %>" readonly>
         </div>
-         <br>
-  
-      <div id="content">
-      <form action="checarLogin.jsp" method="post">
-      
-          <div id="telaLogin">
-      
-      <div class="form-group" id="divlogin2">
-      <input type="text" class="form-control"  id="campologin2" placeholder="Login..." name= "login"> 
-      </div>
-      <div class="form-group" id="divsenha2">
-      <input type="password" class="form-control" id="camposenha2" placeholder="Senha..." name= "senha"> 
-      </div>
-      <input type="submit" value="Enviar" id="botaologar" class="btn btn-default" name= "action">
-      <br>
-      <br>
-      <li><a href="#">Esqueci minha senha </li>
-      <br>
-      <li><a href="cadastroCliente.jsp">Criar uma Conta </li>
-      
-      </form>
-      </div>
-      </div>
-          <br>
-          <br>
-  
-              <div id="sidebar2">
+        <div class="form-group" id="divcamposdireita" >
+            <label for="exampleInputPassword1">Senha</label>
+            <input type="password" class="form-control" id="campodireita" name= "senha" value="<% out.print(funcionario.getSenha()); %>" readonly>
+        </div>
+        
+        <div class="form-group" id="divemailesquerda">
+            <label for="exampleInputPassword1" id="textoemail">Email</label>
+            <input type="text" class="form-control" id="campoemailcliente" name= "email" value="<% out.print(funcionario.getEmailFuncionario());   %>" readonly>
+        </div>
+        
+        
+            <button type="submit" name="action" value="cadastrar" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <br>
+            <br>
+
+                        </fieldset>
+        <br>
+        <br>
+        </div>
+        </div>
+        
+                   <div id="sidebar">
       <!-- Search -->
       <div class="box search">
         <h2>Procure por <span></span></h2>
@@ -131,7 +142,8 @@ and open the template in the editor.
     </div>
     <!-- End Sidebar -->
     <div class="cl">&nbsp;</div>
-  <div class="side-full">
+  </div>     
+         <div class="side-full">
     <!-- More Products -->
     <div class="more-products">
       <div class="more-products-holder">
@@ -236,7 +248,7 @@ and open the template in the editor.
           <p class="right"> &copy; 2015 Miss Glamour. Design by <a href="http://fean.com.br">fean.com.br</a> </p>
         </div>
   <!-- End Footer -->
-  </div>
         </div>
+         </div>
     </body>
 </html>

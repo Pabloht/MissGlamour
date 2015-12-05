@@ -8,6 +8,7 @@ package DAO;
 import Model.Cidade;
 import Model.Cliente;
 import Model.Estado;
+import Model.Promocao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,6 +58,7 @@ public static void incluirCliente(Cliente cliente) throws Exception {
         statement.setBoolean(18, cliente.getPromocao());
         statement.setInt(19, cliente.getSexo());
         statement.setString(20, cliente.getBairro());
+        
         
 
 

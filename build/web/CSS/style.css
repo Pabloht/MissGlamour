@@ -106,9 +106,18 @@ a.cart-link { color:#fff; background:url(imagens/cart-link.gif) no-repeat 0 0; p
 a.cart-link:hover { text-decoration: underline;}
 
 #sidebar { float:left; width:226px;}
+#sidebar2 { 
+    float:left; 
+    width:226px;
+    margin-top: -80px;
+}
 #content { float:right; width:724px;}
 
-#main { padding:10px 0 0 0; }
+#main { 
+    padding:10px 0 0 0; 
+    
+
+}
 
 .box { padding:1px; border:solid 1px #dedede; margin-bottom:10px;}
 .box h2{ background:#7f7f7f; color:#fff; font-weight: normal; padding:0 5px; position:relative; height:27px; line-height:27px; }

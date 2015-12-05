@@ -4,6 +4,10 @@
     Author     : PabloHenrique
 --%>
 
+<%@page import="DAO.EstadoDao"%>
+<%@page import="DAO.CidadeDao"%>
+<%@page import="Model.Estado"%>
+<%@page import="Model.Cidade"%>
 <%@page import="Model.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Sua conta </title>
-         <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
+         <link rel="stylesheet" href="CSS/perfilCliente.css" type="text/css" media="all" />
         <link rel="stylesheet" href="CSS/cadastroCliente.css" type="text/css" media="all" />
 <!--<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />-->
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
@@ -22,6 +26,8 @@
         <%    
          session = request.getSession();
          Cliente cliente = new Cliente();
+         Cidade cidade = new Cidade();
+         Estado estado = new Estado();
            cliente.setNomeCliente((String) session.getAttribute("nomeClienteAutenticado"));
             cliente.setCpfCnpj((String) session.getAttribute("cpfCnpjAutenticado"));
             cliente.setRgIe((String) session.getAttribute("rgIeAutenticado"));
@@ -46,6 +52,11 @@
             }    else {
                 sexo = "Feminino";
             }
+            int idCidade = (Integer) session.getAttribute("cidadeAutenticado");
+            cidade = new CidadeDao().getCidadePorId(idCidade);
+        estado = new EstadoDao().getEstado(cidade.getEstado().getUfEstado());
+        cliente.setEstado(estado);
+        cliente.setCidade(cidade);
         %>
         
          <div class="shell">
@@ -74,7 +85,7 @@
     <!-- End Navigation -->
   </div>
   <!-- End Header -->
- 
+ <div id="main">            
          <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
@@ -83,23 +94,150 @@
                 </h25>
             </div>
                     <br>
-                    
-                    <div id="dados">
-                        <fieldset>
+        
+                    <div id="content">
+                        <div id="dados">
+                        <fieldset id="fieldsetperfil">
                             <legend><h4>Dados Pessoais:</h4></legend>
                             <br>
-           <div class="form-group" id="divcpf">
-            <label for="exampleInputPassword1">CPF/CNPJ</label>
-            <input type="text" class="form-control" id="campocpf"  name= "cpf" value="<% out.print(cliente.getCpfCnpj()); %>" readonly>
+           <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1" id="telaPerfil">CPF/CNPJ</label>
+            <input type="text" class="form-control" id="campoesquerda"  name= "cpf" value="<% out.print(cliente.getCpfCnpj()); %>" readonly>
         </div>
-        <div class="form-group" id="divrg" >
+        <div class="form-group" id="divcamposdireita" >
             <label for="exampleInputPassword1">RG/Ie</label>
-            <input type="text" class="form-control" id="camporg" name= "rg" value="<% out.print(cliente.getRgIe()); %>" readonly>
+            <input type="text" class="form-control" id="campodireita" name= "rg" value="<% out.print(cliente.getRgIe()); %>" readonly>
         </div>
-            Sexo : <% out.print(sexo);   %>
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Sexo</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "sexo" value="<% out.print(sexo);   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">Telefone</label>
+            <input type="text" class="form-control" id="campodireita" name= "telefoneResidencial" value="<% out.print(cliente.getTelefoneResidencial());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Celular</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "celular" value="<% out.print(cliente.getCelular());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">Telefone Recado</label>
+            <input type="text" class="form-control" id="campodireita" name= "telefoneRecado" value="<% out.print(cliente.getTelefoneRecado());   %>" readonly>
+        </div>
+        <div class="form-group" id="divemailesquerda">
+            <label for="exampleInputPassword1" id="textoemail">Email</label>
+            <input type="text" class="form-control" id="campoemailcliente" name= "email" value="<% out.print(cliente.getEmail());   %>" readonly>
+        </div>
+        
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Login</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "login" value="<% out.print(cliente.getLogin());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">Senha</label>
+            <input type="password" class="form-control" id="campodireita" name= "senha" value="<% out.print(cliente.getSenha());   %>" readonly>
+        </div>
+            <button type="submit" name="action" value="cadastrar" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <br>
+            <br>
                         </fieldset>
         </div>
-                        
+        <br>
+        <div id="dados">
+                        <fieldset id="fieldsetperfil">
+                            <legend><h4>ENDEREÇO:</h4></legend>
+                            <br>
+           <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1" id="telaPerfil">Estado</label>
+            <input type="text" class="form-control" id="campoesquerda"  name= "cpf" value="<% out.print(cliente.getEstado().getNomeEstado()); %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita" >
+            <label for="exampleInputPassword1">Cidade</label>
+            <input type="text" class="form-control" id="campodireita" name= "rg" value="<% out.print(cliente.getCidade().getNomeCidade()); %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Bairro</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "sexo" value="<% out.print(cliente.getBairro());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">Complemento</label>
+            <input type="text" class="form-control" id="campodireita" name= "telefoneResidencial" value="<% out.print(cliente.getComplemento());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Número</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "celular" value="<% out.print(cliente.getNumero());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">CEP</label>
+            <input type="text" class="form-control" id="campodireita" name= "telefoneRecado" value="<% out.print(cliente.getCep());   %>" readonly>
+        </div>
+        <div class="form-group" id="divemailesquerda">
+            <label for="exampleInputPassword1" id="textoemail">Endereço</label>
+            <input type="text" class="form-control" id="campoenderecocliente" name= "email" value="<% out.print(cliente.getRua());   %>" readonly>
+        </div>
+        
+            <button type="submit" name="action" value="cadastrar" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <br>
+            <br>
+                        </fieldset>
+        <br>
+        <br>
+        </div>
+        </div>
+        
+                   <div id="sidebar2">
+      <!-- Search -->
+      <div class="box search">
+        <h2>Procure por <span></span></h2>
+        <div class="box-content">
+          <form action="#" method="post">
+            <label>Palavra-chave</label>
+            <input type="text" class="field" />
+            <label>Categoria</label>
+            <select class="field">
+              <option value="">-- Selecione a Categoria --</option>
+            </select>
+            <div class="inline-field">
+              <label>Preço</label>
+              <select class="field small-field">
+                <option value="">$100</option>
+              </select>
+              <label>to:</label>
+              <select class="field small-field">
+                <option value="">$200</option>
+              </select>
+            </div>
+            <input type="submit" class="search-submit" value="Procurar" />
+            <p> <a href="contatoForm.html" class="bul">Entre em Contato/Suporte</a> </p>
+          </form>
+        </div>
+      </div>
+      <!-- End Search -->
+      <!-- Categories -->
+      <div class="box categories">
+        <h2>Categorias <span></span></h2>
+        <div class="box-content">
+          <ul>
+            <li><a href="painelCalças.html"> Calças </a></li>
+            <li><a href="painelSaias.html"> Saias </a></li>
+            <li><a href="#"> Casacos </a></li>
+            <li><a href="#"> Blusas </a></li>
+            <li><a href="#"> Jaquetas </a></li>
+            <li><a href="#"> @Lança Perfume </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li class="last"><a href="#"> </a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Categories -->
+    </div>
+    <!-- End Sidebar -->
+    <div class="cl">&nbsp;</div>
+  </div>     
          <div class="side-full">
     <!-- More Products -->
     <div class="more-products">
@@ -206,6 +344,6 @@
         </div>
   <!-- End Footer -->
         </div>
-        
+         </div>
     </body>
 </html>

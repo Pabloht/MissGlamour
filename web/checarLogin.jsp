@@ -4,6 +4,8 @@
     Author     : PabloHenrique
 --%>
 
+<%@page import="DAO.FuncionarioDao"%>
+<%@page import="Model.Funcionario"%>
 <%@page import="DAO.ClienteDao"%>
 <%@page import="Model.Cliente"%>
 
@@ -20,6 +22,7 @@
             Cliente cliente = new Cliente();
             String login = request.getParameter("login");
             String senha = request.getParameter("senha");
+            
             cliente = clienteDao.LoginCliente(login, senha, request);
             String comLogin = cliente.getLogin();
             if (login.equals(comLogin)) {
@@ -44,13 +47,25 @@
                 session.setAttribute("promocaoAutenticado", cliente.getPromocao());
                 session.setAttribute("sexoAutenticado", cliente.getSexo());
                 session.setAttribute("bairroAutenticado", cliente.getBairro());
-                session.setAttribute("cidadeAutenticado", cliente.getCidade());
+                session.setAttribute("cidadeAutenticado", cliente.getCidade().getIdCidade());
                 session.setAttribute("estadoAutenticado", cliente.getEstado().getIdEstado());
                 response.sendRedirect("home.jsp");
                 
+            } else if(true) {
+                Funcionario funcionario = new Funcionario();
+                funcionario = new FuncionarioDao().LoginFuncionario(login, senha, request);
+                if (login.equals(funcionario.getLogin())) {
+                    session.invalidate();
+                    session = request.getSession(true);
+                    session.setAttribute("idFuncionarioAutenticado", funcionario.getIdFuncionario());
+                    session.setAttribute("nomeFuncionarioAutenticado", funcionario.getNomeFuncionario());
+                    session.setAttribute("loginAutenticado", funcionario.getLogin());
+                    session.setAttribute("senhaAutenticado", funcionario.getSenha());
+                    session.setAttribute("emailFuncionarioAutenticado", funcionario.getEmailFuncionario());
+                    response.sendRedirect("admin.jsp");
+                }
             } else {
-                out.println("Login ou senha invalidos");
-                
+                out.print("Login ou Senha Incorretos");
             }
             %>
     </body>

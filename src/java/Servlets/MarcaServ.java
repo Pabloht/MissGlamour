@@ -43,7 +43,7 @@ public class MarcaServ extends HttpServlet {
             } catch (Exception e) {
                 
             }
-            resp.sendRedirect("deuCerto.html");
+            resp.sendRedirect("login.html");
         }
     }
 

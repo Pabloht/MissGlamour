@@ -19,7 +19,7 @@ public class Promocao implements java.io.Serializable {
     private Date dataFinal;
     private boolean disponivel;
     
-    private List<Produto> produto;
+    
 
     /**
      * @return the idPromocao
@@ -80,14 +80,5 @@ public class Promocao implements java.io.Serializable {
     /**
      * @return the produto
      */
-    public List<Produto> getProduto() {
-        return produto;
-    }
-
-    /**
-     * @param produto the produto to set
-     */
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
-    }
+    
 }

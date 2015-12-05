@@ -29,16 +29,22 @@ select {
 select {
     
   }
+  
+  
 
   #telaLogin {
-      margin-left: 300px;
+      margin-left: 160px;
       margin-top: 50px;
-      height: 300px;   
+      width: 100%;         
+  }
+  
+  #radio {
+      margin-left: 120px;
       
-      
-      
-      
-      
+  }
+  
+  #telaPerfil {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;   
   }
   .styled-select select {
    background: whitesmoke;
@@ -142,14 +148,14 @@ hr {
 [role="button"] {
   cursor: pointer;
 }
+h15,
 h25,
-h2,
 h30,
 h4,
 h5,
 h6,
+.h15,
 .h25,
-.h2,
 .h30,
 .h4,
 .h5,
@@ -159,26 +165,26 @@ h6,
   line-height: 1.1;
   color: inherit;
 }
+h15 small,
 h25 small,
-h2 small,
 h30 small,
 h4 small,
 h5 small,
 h6 small,
+.h15 small,
 .h25 small,
-.h2 small,
 .h30 small,
 .h4 small,
 .h5 small,
 .h6 small,
+h15 .small,
 h25 .small,
-h2 .small,
 h30 .small,
 h4 .small,
 h5 .small,
 h6 .small,
+.h15 .small,
 .h25 .small,
-.h2 .small,
 .h30 .small,
 .h4 .small,
 .h5 .small,
@@ -187,25 +193,25 @@ h6 .small,
   line-height: 1;
   color: #777;
 }
+h15,
+.h15,
 h25,
 .h25,
-h2,
-.h2,
 h30,
 .h30 {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+h15 small,
+.h15 small,
 h25 small,
 .h25 small,
-h2 small,
-.h2 small,
 h30 small,
 .h30 small,
+h15 .small,
+.h15 .small,
 h25 .small,
 .h25 .small,
-h2 .small,
-.h2 .small,
 h30 .small,
 .h30 .small {
   font-size: 65%;
@@ -233,13 +239,13 @@ h6 .small,
 .h6 .small {
   font-size: 75%;
 }
-/* h25: Palavra de cabeçalho da página  */
-h25,
-.h25 {
+/* h15: Palavra de cabeçalho da página  */
+h15,
+.h15 {
   font-size: 36px;
 }
-h2,
-.h2 {
+h25,
+.h25 {
   font-size: 30px;
 }
 h30,
@@ -282,20 +288,30 @@ small,
   padding-bottom: 9px;
   margin: 40px 0 20px;
   border-bottom: 1px solid #eee;
-  
+  margin-left: 30px; 
   
 }
+
+#fieldsetcadastro {
+    border-radius: 15px;
+}
 #titulologin{
-  margin-left: 330px;   
+  margin-left: 470px;   
 }
 
 #dados {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-left: 20px;
-    margin-top: 50px;
-    height: 400px;
+    margin-left: -20px;
+    margin-top: 20px;
+    width: 100%;
+}
+#dadoscadastrar {
     
-    
+    margin-top: 20px;
+    width: 100%;
+}
+#botaoalterar {
+    margin-left: 200px;
+    width: 50%;
 }
 #campoperfil {
     margin-bottom:10px;
@@ -623,21 +639,45 @@ dd {
 }
 /* Forms da página */ 
 
-#camponome, #campoendereco {
-    width: 50%;    
+
+#letra {
+    margin-left: 120px;
 }
-#campocpf{
-    width: 100%;
-     
+
+#divcamposesquerda {
+    float: left;
+    margin-left: 20px;
 }
+#divcamposdireita{
+    margin-left: 65%;   
+}
+#divemailesquerda {
+    margin-left: 40px;
+}
+#campoesquerda {
+    width: 125%;
+    margin-left: 20px;
+}
+#textoemail {
+    margin-left: -20px;
+}
+#campodireita{
+    width: 85%;
+}
+
 #campoemail{
-    width: 30%;
+    width: 55%;
 }
 #camponumero{
-    width: 6%;
+    width: 15%;
 }
+#botaocadastrar {
+    margin-left: 120px;
+    width: 66%;
+}
+
 #divrg, #divnumero, #divbairro, #divcelular, #divemail, #divcidade, #divsenha{
- margin-left: 25%;   
+ margin-left: 55%;   
 }
 #divsenha2, #divlogin2 {
     
@@ -648,9 +688,16 @@ dd {
 
 #divcpf, #divcep, #divcomplemento, #divtelefone, #divtelefonerecado, #divlogin, #divestado {
     float: left;
-    
+    margin-left: 120px;
 }
-
+#camponome, #campoendereco {
+  margin-left: 120px;
+    width: 63%;    
+}
+#campocpf{
+    width: 100%;
+     
+}
 
 
 
@@ -3130,8 +3177,8 @@ a.badge:focus {
   color: inherit;
   background-color: #eee;
 }
-.jumbotron h25,
-.jumbotron .h25 {
+.jumbotron h15,
+.jumbotron .h15 {
   color: inherit;
 }
 .jumbotron p {
@@ -3158,8 +3205,8 @@ a.badge:focus {
     padding-right: 60px;
     padding-left: 60px;
   }
-  .jumbotron h25,
-  .jumbotron .h25 {
+  .jumbotron h15,
+  .jumbotron .h15 {
     font-size: 63px;
   }
 }

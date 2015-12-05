@@ -44,7 +44,7 @@ and open the template in the editor.
     <!-- End Navigation -->
   </div>
   <!-- End Header -->
- 
+ <div id="main">
          <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
@@ -53,9 +53,13 @@ and open the template in the editor.
                 </h25>
             </div>
         </div>
-  <div id="main">
+         <br>
+  
+      <div id="content">
       <form action="checarLogin.jsp" method="post">
-      <div id="telaLogin">
+      
+          <div id="telaLogin">
+      
       <div class="form-group" id="divlogin2">
       <input type="text" class="form-control"  id="campologin2" placeholder="Login..." name= "login"> 
       </div>
@@ -66,9 +70,67 @@ and open the template in the editor.
       <br>
       <br>
       <li><a href="#">Esqueci minha senha </li>
+      <br>
+      <li><a href="cadastroCliente.jsp">Criar uma Conta </li>
+      
       </form>
       </div>
-  </div>
+      </div>
+          <br>
+          <br>
+  
+              <div id="sidebar2">
+      <!-- Search -->
+      <div class="box search">
+        <h2>Procure por <span></span></h2>
+        <div class="box-content">
+          <form action="#" method="post">
+            <label>Palavra-chave</label>
+            <input type="text" class="field" />
+            <label>Categoria</label>
+            <select class="field">
+              <option value="">-- Selecione a Categoria --</option>
+            </select>
+            <div class="inline-field">
+              <label>Preço</label>
+              <select class="field small-field">
+                <option value="">$100</option>
+              </select>
+              <label>to:</label>
+              <select class="field small-field">
+                <option value="">$200</option>
+              </select>
+            </div>
+            <input type="submit" class="search-submit" value="Procurar" />
+            <p> <a href="contatoForm.html" class="bul">Entre em Contato/Suporte</a> </p>
+          </form>
+        </div>
+      </div>
+      <!-- End Search -->
+      <!-- Categories -->
+      <div class="box categories">
+        <h2>Categorias <span></span></h2>
+        <div class="box-content">
+          <ul>
+            <li><a href="painelCalças.html"> Calças </a></li>
+            <li><a href="painelSaias.html"> Saias </a></li>
+            <li><a href="#"> Casacos </a></li>
+            <li><a href="#"> Blusas </a></li>
+            <li><a href="#"> Jaquetas </a></li>
+            <li><a href="#"> @Lança Perfume </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li><a href="#"> </a></li>
+            <li class="last"><a href="#"> </a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Categories -->
+    </div>
+    <!-- End Sidebar -->
+    <div class="cl">&nbsp;</div>
   <div class="side-full">
     <!-- More Products -->
     <div class="more-products">
@@ -174,6 +236,7 @@ and open the template in the editor.
           <p class="right"> &copy; 2015 Miss Glamour. Design by <a href="http://fean.com.br">fean.com.br</a> </p>
         </div>
   <!-- End Footer -->
+  </div>
         </div>
     </body>
 </html>
