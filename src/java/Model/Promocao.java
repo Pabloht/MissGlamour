@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.util.List;
 
 
+
 /**
  *
  * @author PabloHenrique
@@ -18,6 +19,24 @@ public class Promocao implements java.io.Serializable {
     private Date dataInicial;
     private Date dataFinal;
     private boolean disponivel;
+    private int desconto ;
+
+    public int getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(int desconto) {
+        this.desconto = desconto;
+    }
+
+    public boolean getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
     
     
 
@@ -28,9 +47,11 @@ public class Promocao implements java.io.Serializable {
         return idPromocao;
     }
 
+
     /**
      * @param idPromocao the idPromocao to set
      */
+
     public void setIdPromocao(int idPromocao) {
         this.idPromocao = idPromocao;
     }
@@ -63,22 +84,5 @@ public class Promocao implements java.io.Serializable {
         this.dataFinal = dataFinal;
     }
 
-    /**
-     * @return the disponivel
-     */
-    public boolean isDisponivel() {
-        return disponivel;
-    }
-
-    /**
-     * @param disponivel the disponivel to set
-     */
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }
-
-    /**
-     * @return the produto
-     */
-    
+      
 }
