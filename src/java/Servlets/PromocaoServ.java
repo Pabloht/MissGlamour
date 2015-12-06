@@ -53,8 +53,7 @@ public class PromocaoServ extends HttpServlet {
                
                 PromocaoDao.incluirPromocao(c);
                 
-            } catch (Exception e) {
-                
+            } catch (Exception e) {                
             }
             resp.sendRedirect("cadastroPromocao.html");
         }

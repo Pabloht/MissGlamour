@@ -8,6 +8,10 @@
         <servlet-name>ClienteServ</servlet-name>
         <servlet-class>Servlets.ClienteServ</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PromocaoServ</servlet-name>
+        <servlet-class>Servlets.PromocaoServ</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MarcaServ</servlet-name>
         <url-pattern>/MarcaServ</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ClienteServ</servlet-name>
         <url-pattern>/ClienteServ</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>PromocaoServ</servlet-name>
+        <url-pattern>/PromocaoServ</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

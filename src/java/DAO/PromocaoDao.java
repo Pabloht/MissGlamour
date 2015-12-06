@@ -21,6 +21,7 @@ public class PromocaoDao {
                  
 public static void incluirPromocao(Promocao promocao) throws Exception {
     
+        System.out.println("Tela Dao Inicio");
         Connection conexao = DataHelper.GetConexao();
 
         String sql = "insert into promocao  (dataInicial,dataFinal,disponivel,desconto) values((?),(?),(?),(?))";
