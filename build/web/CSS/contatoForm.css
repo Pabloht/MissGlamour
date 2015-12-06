@@ -4,8 +4,8 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 30/11/2015, 18:31:35
-    Author     : PabloHenrique
+    Created on : 30/11/2015, 23:10:23
+    Author     : Igor
 */
 
 
@@ -323,15 +323,14 @@ small,
   overflow-y: scroll;
 }
 .container {
-  padding-right: 0px;
-  padding-left: 0px;
-  margin-right: 0px;
-  margin-left: 0px;
-  width: 125%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 @media (min-width: 768px) {
   .container {
-    width: 100%;
+    width: 750px;
   }
 }
 @media (min-width: 992px) {
@@ -629,36 +628,29 @@ dd {
 }
 /* Forms da página */ 
 
-#campoSenha , #campoLogin{
-    margin-bottom:10px;
-    border:hidden;
-    height:30px;
-    border-radius: 2px;
-    font-family:"Comic Sans MS", cursive;
-    font-size:16px;
+#camponome, #campoendereco {
+    width: 50%;    
+}
+#campocpf{
+    width: 100%;
+     
+}
+#campoemail{
+    width: 30%;
+}
+#camponumero{
+    width: 6%;
+}
+#divrg, #divnumero, #divbairro, #divcelular, #divemail, #divcidade, #divsenha{
+ margin-left: 25%;   
 }
 
-
-#botaoTwitter {
+#divcpf, #divcep, #divcomplemento, #divtelefone, #divtelefonerecado, #divlogin, #divestado {
+    float: left;
     
 }
 
-#botaoFacebook {
-    position:absolute;
-    top:20px;
-    right:10px;
-    margin:0px;
-    padding:0px;
-}
 
-#shareTwitter {
-    position:absolute;
-    right:20px;
-    top:10px;
-    margin:0px;
-    padding:0px;
-}
-   
 
 
 .form-control {
@@ -2340,7 +2332,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
-
 @media (min-width: 768px) {
   .navbar {
     border-radius: 4px;
@@ -2451,7 +2442,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
-  
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
