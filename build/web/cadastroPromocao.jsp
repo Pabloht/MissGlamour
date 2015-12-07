@@ -1,6 +1,6 @@
 <%-- 
-    Document   : admin
-    Created on : 05/12/2015, 18:04:32
+    Document   : cadastroPromocao
+    Created on : 06/12/2015, 14:13:39
     Author     : PabloHenrique
 --%>
 
@@ -9,34 +9,60 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
+        <title>Cadastro de Promoção</title>
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="CSS/cadastroPromocao.css" rel="stylesheet" type="text/css" /> 
+         <link href="CSS/3-col-portfolio.css" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
 <!--<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />-->
-<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
-<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
-<script src="js/jquery-func.js" type="text/javascript"></script>
+<script>
+            //Esse script formata cpf e telefone.
+            function formatar(mascara, documento) {
+                var i = documento.value.length;
+                var saida = mascara.substring(0, 1);
+                var texto = mascara.substring(i)
+
+                if (texto.substring(0, 1) != saida) {
+                    documento.value += texto.substring(0, 1);
+                }
+
+            }
+        </script>
  
+</script> 
+         
+         
+         
     </head>
     <body>
-        <%   
-        session = request.getSession();
-        Funcionario funcionario = new Funcionario();
-        funcionario.setNomeFuncionario((String) session.getAttribute("nomeFuncionarioAutenticado"));
+        <% 
+            
+            session = request.getSession();
+            Funcionario funcionario = new Funcionario();
+            funcionario.setIdFuncionario((Integer) session.getAttribute("idFuncionarioAutenticado"));
+            funcionario.setNomeFuncionario((String) session.getAttribute("nomeFuncionarioAutenticado"));
+            
+            
+            
+            
+            
+            %>
+   <!-- Shell -->
+    <div class="shell">
+ 
         
-        %>
-        <div class="shell">
-  <!-- Header -->
-  <div id="header">
+    <div id="header">
     <h1 id="logo"><a href="#">Miss Glamour</a></h1>
     
-            
+   
+    
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="admin.jsp" class="active">Home</a></li>
+        <li><a href="admin.jsp" >Home</a></li>
         <li><a href="contatoForm.html" >Cadastrar Produto</a></li>
-        <li><a href="cadastroPromocao.jsp" >Cadastrar Promocao</a></li>
+        <li><a href="cadastroPromocao.jsp" class="active">Cadastrar Promocao</a></li>
         <li><a href="cadastroCliente.jsp" >Atendimento ao Cliente</a></li>
         <li><a href="cadastroCliente.jsp" >Funcionários</a></li>
         <li><a href="perfilFuncionario.jsp" ><% out.print(funcionario.getNomeFuncionario());        %></a></li>
@@ -45,132 +71,48 @@
     </div>
     <!-- End Navigation -->
   </div>
+        <div id="formulario">      
   <!-- End Header -->
-  <!-- Main -->
-  <div id="main">
-    <div class="cl">&nbsp;</div>
-    <!-- Content -->
-    <div id="content">
-      <!-- Content Slider -->
-      <div id="slider" class="box">
-        <div id="slider-holder">
-          <ul>
-            <li><a href="#"><img src="CSS/imagens/calca1.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="CSS/imagens/calca2.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="CSS/imagens/calca3.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="CSS/imagens/saia1.jpg" alt="" /></a></li>
-          </ul>
+    
+         <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h25 class="page-header">Cadastro de Promoção
+                    <small></small>
+                </h25>
+            </div>
         </div>
-        <div id="slider-nav"> <a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> </div>
-      </div>
-      <!-- End Content Slider -->   
-      <!-- Products -->
-      <div class="products">
-        <div class="cl">&nbsp;</div>
-        <ul>
-          <li> <a href="#"><img src="CSS/imagens/mid1.jpg" alt="" /></a>
-            <div class="product-info">
-              <h3>-- LANÇAMENTO --</h3>
-              
-              <div class="product-desc">
-                <h4>Feminino</h4>
-                <p>Calça Jeans<br />
-                  @Lança Perfume</p>
-                <strong class="price">R$200.00</strong> 
-                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521826170621/?type=3&theater" data-layout="button"></div>
-              </div>
-            </div>
-          </li>
+        <!-- /.row -->
+        
+        
+    <!-- Formulario -->
+    <br>
+    <br>
+    <form action="PromocaoServ" method="post" onsubmit="return validar(this);">
+        
+        <div class="form-group" id="divrg" >
+            <label for="exampleInputPassword1">Data Inicial</label>
+            <input type="text" class="form-control" id="camporg" name= "dataInicial" placeholder="dd/MM/aaaa" onkeyup="formatar('##/##/####',this)">
             
-          <li> <a href="#"><img src="CSS/imagens/mid5.jpg" alt="" /></a>
-            <div class="product-info">
-              <h3>-- LANÇAMENTO --</h3>
-              <div class="product-desc">
-                <h4>Feminino</h4>
-                <p>Calça Jeans<br />
-                  @Lança Perfume</p>
-                <strong class="price">R$200.00</strong>
-                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521642837306/?type=3&theater" data-layout="button"></div>
-              </div>
-            </div>
-          </li>
-            
-          <li class="last"> <a href="#"><img src="CSS/imagens/mid3.jpg" alt="" /></a>
-            <div class="product-info">
-              <h3>-- LANÇAMENTO --</h3>
-              <div class="product-desc">
-                <h4>Feminino</h4>
-                <p>Calça Jeans<br />
-                  @Lança Perfume</p>
-                <strong class="price">R$200.00</strong> 
-                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521732837297/?type=3&theater" data-layout="button"></div>
-              </div>
-            </div>
-          </li>
-            
-        </ul>
-        <div class="cl">&nbsp;</div>
-      </div>
-      <!-- End Products -->
-    </div>
-    <!-- End Content -->
-    <!-- Sidebar -->
-    <div id="sidebar">
-      <!-- Search -->
-      <div class="box search">
-        <h2>Procure por <span></span></h2>
-        <div class="box-content">
-          <form action="#" method="post">
-            <label>Palavra-chave</label>
-            <input type="text" class="field" />
-            <label>Categoria</label>
-            <select class="field">
-              <option value="">-- Selecione a Categoria --</option>
-            </select>
-            <div class="inline-field">
-              <label>Preço</label>
-              <select class="field small-field">
-                <option value="">$100</option>
-              </select>
-              <label>to:</label>
-              <select class="field small-field">
-                <option value="">$200</option>
-              </select>
-            </div>
-            <input type="submit" class="search-submit" value="Procurar" />
-            <p> <a href="contatoForm.html" class="bul">Entre em Contato/Suporte</a> </p>
-          </form>
         </div>
-      </div>
-      <!-- End Search -->
-      <!-- Categories -->
-      <div class="box categories">
-        <h2>Categorias <span></span></h2>
-        <div class="box-content">
-          <ul>
-            <li><a href="painelCalças.html"> Calças </a></li>
-            <li><a href="painelSaias.html"> Saias </a></li>
-            <li><a href="#"> Casacos </a></li>
-            <li><a href="#"> Blusas </a></li>
-            <li><a href="#"> Jaquetas </a></li>
-            <li><a href="#"> @Lança Perfume </a></li>
-            <li><a href="#"> </a></li>
-            <li><a href="#"> </a></li>
-            <li><a href="#"> </a></li>
-            <li><a href="#"> </a></li>
-            <li><a href="#"> </a></li>
-            <li class="last"><a href="#"> </a></li>
-          </ul>
+        <div class="form-group" id="divrg" >
+            <label for="exampleInputPassword1">Data Final</label>
+            <input type="text" class="form-control" id="camporg" name= "dataFinal" placeholder="dd/MM/aaaa" onkeyup="formatar('##/##/####',this)">
+         
         </div>
-      </div>
-      <!-- End Categories -->
-    </div>
-    <!-- End Sidebar -->
-    <div class="cl">&nbsp;</div>
-  </div>
-  <!-- End Main -->
-  <!-- Side Full -->
-  <div class="side-full">
+         <div class="form-group" id="divrg" >
+            <label for="exampleInputPassword1">Desconto em Porcentagem</label>
+            <input type="numeric" class="form-control" id="camporg" name= "desconto" placeholder="Desconto em Porcentagem">
+         
+        </div>
+       
+        <button type="submit" name="action" value="cadastrar" class="btn btn-default">Cadastrar</button>
+    </form>
+        </div>
+        
+    <br>
+    <!-- /.form -->
+    <div class="side-full">
     <!-- More Products -->
     <div class="more-products">
       <div class="more-products-holder">
@@ -269,14 +211,13 @@
     </div>
     <!-- End Text Cols -->
   </div>
-  <!-- End Side Full -->
   <!-- Footer -->
         <div id="footer">
           <p class="left"> <a href="home.html">Home</a> <span>|</span> <a href="contatoForm">Fale conosco</a> <span>| <a href="informacoes.html">Informações</a> </p>
           <p class="right"> &copy; 2015 Miss Glamour. Design by <a href="http://fean.com.br">fean.com.br</a> </p>
         </div>
-  <!-- End Footer -->
-</div>
-<!-- End Shell -->
+    
+   
+    </div>
     </body>
 </html>

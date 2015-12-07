@@ -107,7 +107,41 @@ public class ClienteServ extends HttpServlet {
             } catch (Exception e) {
                 
             }
-            resp.sendRedirect("deuCerto.html");
+            resp.sendRedirect("login.html");
+        } else if (action.equalsIgnoreCase("alterarDados")) {
+            Cliente cl = (Cliente) req.getSession().getAttribute("cliente");
+            
+            String nome = req.getParameter("nome");          
+            String cpf = req.getParameter("cpf");          
+            String rg = req.getParameter("rg");  
+            String telefone = req.getParameter("telefone");          
+            String celular = req.getParameter("celular");          
+            String telefoneRecado = req.getParameter("telefoneRecado");          
+            String email = req.getParameter("email");          
+            String senha = req.getParameter("senha");          
+            String sexo = req.getParameter("sexo");
+            Cliente c = new Cliente();
+            try {
+                c.setIdCliente(cl.getIdCliente());
+                c.setNomeCliente(nome);
+                c.setCpfCnpj(cpf);
+                c.setRgIe(rg);
+                c.setTelefoneResidencial(telefone);
+                c.setCelular(celular);
+                c.setTelefoneRecado(telefoneRecado);
+                c.setEmail(email);
+                c.setSenha(senha);
+                if(sexo.equals("masculino")) {
+                    c.setSexo(0);
+                } else {
+                    c.setSexo(1);
+                }
+                
+                new ClienteDao().AlterarDados(c);
+            } catch (Exception ex) {
+                
+            }
+            resp.sendRedirect("perfilCliente.jsp");
         }
     }
 

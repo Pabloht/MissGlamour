@@ -55,7 +55,7 @@ public class PromocaoServ extends HttpServlet {
                 
             } catch (Exception e) {                
             }
-            resp.sendRedirect("cadastroPromocao.html");
+            resp.sendRedirect("cadastroPromocao.jsp");
         }
     }
 

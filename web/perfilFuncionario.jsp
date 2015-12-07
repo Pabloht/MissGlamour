@@ -38,9 +38,9 @@
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="home.jsp" >Home</a></li>
+        <li><a href="admin.jsp" >Home</a></li>
         <li><a href="contatoForm.html" >Cadastrar Produto</a></li>
-        <li><a href="informacoes.html" >Cadastrar Promocao</a></li>
+        <li><a href="cadastroPromocao.jsp" >Cadastrar Promocao</a></li>
         <li><a href="cadastroCliente.jsp" >Atendimento ao Cliente</a></li>
         <li><a href="cadastroCliente.jsp" >Funcionários</a></li>
         <li><a href="perfilFuncionario.jsp" class="active" ><% out.print(funcionario.getNomeFuncionario());        %></a></li>

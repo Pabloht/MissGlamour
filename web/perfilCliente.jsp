@@ -16,12 +16,69 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Sua conta </title>
          <link rel="stylesheet" href="CSS/perfilCliente.css" type="text/css" media="all" />
-        <link rel="stylesheet" href="CSS/cadastroCliente.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="CSS/perfil.css" type="text/css" media="all" />
 <!--<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />-->
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
+<script type="text/javascript">
+(function($) {
+                $(function() {
+
+
+                    $('.logar').bind('click', function(e) {
+
+
+                        $('#boxes').bPopup();
+
+                    });
+
+                });
+
+            })(jQuery);
+
+</script>
+
+<script type="text/javascript">
+(function($) {
+                $(function() {
+
+
+                    $('.logarendereco').bind('click', function(e) {
+
+
+                        $('#boxesendereco').bPopup();
+
+                    });
+
+                });
+
+            })(jQuery);
+
+</script>
     </head>
+    
+     <script type="text/javascript">
+
+        (function($) {
+            $(function() {
+
+        <%
+
+            Cliente cl = (Cliente) session.getAttribute("cliente");
+
+            if (cl != null) {
+                out.print(" $('#edit').bPopup();");
+            }
+
+        %>
+
+            });
+
+        })(jQuery);
+
+    </script>
     <body>
         <%    
          session = request.getSession();
@@ -96,6 +153,7 @@
                     <br>
         
                     <div id="content">
+                        <!-- Dados Pessoais-->
                         <div id="dados">
                         <fieldset id="fieldsetperfil">
                             <legend><h4>Dados Pessoais:</h4></legend>
@@ -137,46 +195,47 @@
             <label for="exampleInputPassword1">Senha</label>
             <input type="password" class="form-control" id="campodireita" name= "senha" value="<% out.print(cliente.getSenha());   %>" readonly>
         </div>
-            <button type="submit" name="action" value="cadastrar" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <button type="submit" class="logar btn btn-default" name="modal" name="action" value="cadastrar" id="botaoalterar">Alterar</button>
             <br>
             <br>
                         </fieldset>
         </div>
         <br>
+                        <!-- Endereço -->
         <div id="dados">
                         <fieldset id="fieldsetperfil">
                             <legend><h4>ENDEREÇO:</h4></legend>
                             <br>
            <div class="form-group" id="divcamposesquerda">
             <label for="exampleInputPassword1" id="telaPerfil">Estado</label>
-            <input type="text" class="form-control" id="campoesquerda"  name= "cpf" value="<% out.print(cliente.getEstado().getNomeEstado()); %>" readonly>
+            <input type="text" class="form-control" id="campoesquerda"  name= "estado" value="<% out.print(cliente.getEstado().getNomeEstado()); %>" readonly>
         </div>
         <div class="form-group" id="divcamposdireita" >
             <label for="exampleInputPassword1">Cidade</label>
-            <input type="text" class="form-control" id="campodireita" name= "rg" value="<% out.print(cliente.getCidade().getNomeCidade()); %>" readonly>
+            <input type="text" class="form-control" id="campodireita" name= "cidade" value="<% out.print(cliente.getCidade().getNomeCidade()); %>" readonly>
         </div>
         <div class="form-group" id="divcamposesquerda">
             <label for="exampleInputPassword1">Bairro</label>
-            <input type="text" class="form-control" id="campoesquerda" name= "sexo" value="<% out.print(cliente.getBairro());   %>" readonly>
+            <input type="text" class="form-control" id="campoesquerda" name= "bairro" value="<% out.print(cliente.getBairro());   %>" readonly>
         </div>
         <div class="form-group" id="divcamposdireita">
             <label for="exampleInputPassword1">Complemento</label>
-            <input type="text" class="form-control" id="campodireita" name= "telefoneResidencial" value="<% out.print(cliente.getComplemento());   %>" readonly>
+            <input type="text" class="form-control" id="campodireita" name= "complemento" value="<% out.print(cliente.getComplemento());   %>" readonly>
         </div>
         <div class="form-group" id="divcamposesquerda">
             <label for="exampleInputPassword1">Número</label>
-            <input type="text" class="form-control" id="campoesquerda" name= "celular" value="<% out.print(cliente.getNumero());   %>" readonly>
+            <input type="text" class="form-control" id="campoesquerda" name= "numero" value="<% out.print(cliente.getNumero());   %>" readonly>
         </div>
         <div class="form-group" id="divcamposdireita">
             <label for="exampleInputPassword1">CEP</label>
-            <input type="text" class="form-control" id="campodireita" name= "telefoneRecado" value="<% out.print(cliente.getCep());   %>" readonly>
+            <input type="text" class="form-control" id="campodireita" name= "cep" value="<% out.print(cliente.getCep());   %>" readonly>
         </div>
         <div class="form-group" id="divemailesquerda">
             <label for="exampleInputPassword1" id="textoemail">Endereço</label>
-            <input type="text" class="form-control" id="campoenderecocliente" name= "email" value="<% out.print(cliente.getRua());   %>" readonly>
+            <input type="text" class="form-control" id="campoenderecocliente" name= "rua" value="<% out.print(cliente.getRua());   %>" readonly>
         </div>
         
-            <button type="submit" name="action" value="cadastrar" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <button type="submit" name="modal" id="botaoalterar" class="logarendereco btn btn-default">Alterar</button>
             <br>
             <br>
                         </fieldset>
@@ -345,5 +404,110 @@
   <!-- End Footer -->
         </div>
          </div>
+         <div id="boxes">     
+            <span class="b-close"> X </span>
+            <form name="" method="post" action="ClienteServ"><br>
+               <div id="dadosbox">
+                        <fieldset id="fieldsetperfil">
+                            <legend><h4>Dados Pessoais:</h4></legend>
+                            <br>
+           <div class="form-group" id="campoesquerda">
+            <label for="exampleInputPassword1" id="telaPerfil">Nome</label>
+            <input type="text" class="form-control" id="camponome"  name= "nome" value="<% out.print(cliente.getNomeCliente()); %>" >
+        </div>
+           <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1" id="telaPerfil">CPF/CNPJ</label>
+            <input type="text" class="form-control" id="campoesquerda"  name= "cpf" value="<% out.print(cliente.getCpfCnpj()); %>" >
+        </div>
+        <div class="form-group" id="divcamposdireita" >
+            <label for="exampleInputPassword1">RG/Ie</label>
+            <input type="text" class="form-control" id="campodireita" name= "rg" value="<% out.print(cliente.getRgIe()); %>" >
+        </div>
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Sexo</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "sexo" value="<% out.print(sexo);   %>" >
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">Telefone</label>
+            <input type="text" class="form-control" id="campodireita" name= "telefoneResidencial" value="<% out.print(cliente.getTelefoneResidencial());   %>" >
+        </div>
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Celular</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "celular" value="<% out.print(cliente.getCelular());   %>" >
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">Telefone Recado</label>
+            <input type="text" class="form-control" id="campodireita" name= "telefoneRecado" value="<% out.print(cliente.getTelefoneRecado());   %>" >
+        </div>
+        <div class="form-group" id="divemailesquerda">
+            <label for="exampleInputPassword1" id="textoemail">Email</label>
+            <input type="text" class="form-control" id="campoemailcliente" name= "email" value="<% out.print(cliente.getEmail());   %>" >
+        </div>
+        
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Senha</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "senha" >
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">Nova Senha</label>
+            <input type="password" class="form-control" id="campodireita" name= "nnnao" placeholder="Senha..." >
+        </div>
+            <button type="submit" name="action" value="alterarDados" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <br>
+            <br>
+                        </fieldset>
+        </div>
+            </form>
+
+        </div>
+        
+        <div id="boxesendereco">     
+            <span class="b-close"> X </span>
+            <form name="" method="post" action="check.jsp"><br>
+              <div id="dadosbox">
+                        <fieldset id="fieldsetperfil">
+                            <legend><h4>ENDEREÇO:</h4></legend>
+                            <br>
+           <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1" id="telaPerfil">Estado</label>
+            <input type="text" class="form-control" id="campoesquerda"  name= "estado" value="<% out.print(cliente.getEstado().getNomeEstado()); %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita" >
+            <label for="exampleInputPassword1">Cidade</label>
+            <input type="text" class="form-control" id="campodireita" name= "cidade" value="<% out.print(cliente.getCidade().getNomeCidade()); %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Bairro</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "bairro" value="<% out.print(cliente.getBairro());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">Complemento</label>
+            <input type="text" class="form-control" id="campodireita" name= "complemento" value="<% out.print(cliente.getComplemento());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1">Número</label>
+            <input type="text" class="form-control" id="campoesquerda" name= "numero" value="<% out.print(cliente.getNumero());   %>" readonly>
+        </div>
+        <div class="form-group" id="divcamposdireita">
+            <label for="exampleInputPassword1">CEP</label>
+            <input type="text" class="form-control" id="campodireita" name= "cep" value="<% out.print(cliente.getCep());   %>" readonly>
+        </div>
+        <div class="form-group" id="divemailesquerda">
+            <label for="exampleInputPassword1" id="textoemail">Endereço</label>
+            <input type="text" class="form-control" id="campoenderecocliente" name= "rua" value="<% out.print(cliente.getRua());   %>" readonly>
+        </div>
+        
+            <button type="submit" name="modal" id="botaoalterar" class="logar btn btn-default">Alterar</button>
+            <br>
+            <br>
+                        </fieldset>
+        <br>
+        <br>
+        </div>
+            </form>
+
+        </div>
+
+        
     </body>
 </html>
