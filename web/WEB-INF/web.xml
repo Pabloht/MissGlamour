@@ -9,8 +9,16 @@
         <servlet-class>Servlets.ClienteServ</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ProdutoServ</servlet-name>
+        <servlet-class>Servlets.ProdutoServ</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PromocaoServ</servlet-name>
         <servlet-class>Servlets.PromocaoServ</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuncionarioServ</servlet-name>
+        <servlet-class>Servlets.FuncionarioServ</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MarcaServ</servlet-name>
@@ -20,9 +28,17 @@
         <servlet-name>ClienteServ</servlet-name>
         <url-pattern>/ClienteServ</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoServ</servlet-name>
+        <url-pattern>/ProdutoServ</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PromocaoServ</servlet-name>
         <url-pattern>/PromocaoServ</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionarioServ</servlet-name>
+        <url-pattern>/FuncionarioServ</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

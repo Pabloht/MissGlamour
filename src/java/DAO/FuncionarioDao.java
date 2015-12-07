@@ -42,4 +42,51 @@ public class FuncionarioDao {
    
        return f;
     }
+    public static Funcionario getFuncionario(int id) throws SQLException {
+
+        
+        Funcionario f = new Funcionario();
+        Connection conexao = DataHelper.GetConexao();
+        
+                String sql = "SELECT * FROM funcionario where idFuncionario= " + String.valueOf(id);
+                PreparedStatement statement = conexao.prepareStatement(sql);
+                ResultSet rs = statement.executeQuery();
+        try {
+            while (rs.next()) {
+                f.setIdFuncionario(rs.getInt("idFuncionario"));
+                f.setLogin(rs.getString("login"));
+                f.setSenha(rs.getString("senha"));
+                f.setEmailFuncionario(rs.getString("emailFuncionario"));
+                f.setNomeFuncionario(rs.getString("nome"));
+                f.setCondicao(rs.getBoolean("condicao"));
+                
+            }        
+                
+                
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return f;
+    }
+    
+    public static void AlterarDados(Funcionario funcionario) throws Exception {
+
+        Connection conexao = DataHelper.GetConexao();
+
+
+        String sql = "UPDATE  funcionario SET nomeFuncionario = (?), senha = (?), emailFuncionario = (?) WHERE idFuncionario=(?)";
+
+        PreparedStatement statement = conexao.prepareStatement(sql);
+
+        statement.setString(1, funcionario.getNomeFuncionario());
+        statement.setString(2, funcionario.getSenha());
+        statement.setString(3, funcionario.getEmailFuncionario());
+        statement.setInt(4, funcionario.getIdFuncionario());
+
+
+        statement.executeUpdate();
+
+    }
 }

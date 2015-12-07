@@ -22,7 +22,10 @@ body {
     margin-top: 20px;
     width: 100%;
 }
-
+#camposesquerda {
+    width: 60%;
+    margin-left: 20px;
+}
 
 #boxes {
     display: none;

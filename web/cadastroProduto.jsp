@@ -1,120 +1,233 @@
 <%-- 
-    Document   : admin
-    Created on : 05/12/2015, 18:04:32
-    Author     : PabloHenrique
+    Document   : cadastroProduto
+    Created on : 06/12/2015, 22:32:50
+    Author     : Igor
 --%>
 
-<%@page import="Model.Funcionario"%>
+<%@page import="DAO.PromocaoDao"%>
+<%@page import="Model.Promocao"%>
+<%@page import="Model.Marca"%>
+<%@page import="DAO.MarcaDao"%>
+<%@page import="DAO.TamanhoDao"%>
+<%@page import="Model.Tamanho"%>
+<%@page import="Model.Cor"%>
+<%@page import="DAO.CorDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
-<!--<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />-->
-<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
-<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
-<script src="js/jquery-func.js" type="text/javascript"></script>
- 
+        <title>Cadastro Produto</title>
+        <script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link href="CSS/cadastroCliente.css" rel="stylesheet" type="text/css" /> 
+         <link href="CSS/3-col-portfolio.css" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" href="CSS/style.css" type="text/css" media="all" />
+        <!--<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />-->
+        <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+        <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+        <script src="js/jquery-func.js" type="text/javascript"></script>
     </head>
-    <body>
-        <%   
-        session = request.getSession();
-        Funcionario funcionario = new Funcionario();
-        funcionario.setNomeFuncionario((String) session.getAttribute("nomeFuncionarioAutenticado"));
+    
+     <body>
         
-        %>
-        <div class="shell">
-  <!-- Header -->
-  <div id="header">
+   <!-- Shell -->
+    <div class="shell">
+   
+    <div id="header">
     <h1 id="logo"><a href="#">Miss Glamour</a></h1>
     
-            
+    <!-- Cart -->
+    <div id="cart"> <a href="#" class="cart-link">Seu carrinho</a>
+        
+      <div class="cl">&nbsp;</div>
+      <span> Peças: <strong>0</strong></span> &nbsp;&nbsp; <span>Total: <strong>R$0.00</strong></span> 
+    </div>
+    <!-- End Cart -->
+    
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="admin.jsp" class="active">Home</a></li>
-        <li><a href="cadastroProduto.jsp" >Cadastrar Produto</a></li>
-        <li><a href="cadastroPromocao.jsp" >Cadastrar Promocao</a></li>
-        <li><a href="cadastroCliente.jsp" >Atendimento ao Cliente</a></li>
-        <li><a href="cadastroCliente.jsp" >Funcionários</a></li>
-        <li><a href="perfilFuncionario.jsp" ><% out.print(funcionario.getNomeFuncionario());        %></a></li>
-        <li><a href="logout.jsp">Sair</a></li>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="contatoForm.html" >Fale conosco</a></li>
+        <li><a href="informacoes.html" >Informações</a></li>
+        <li><a href="cadastroCliente.jsp" class="active">Criar uma Conta</a></li>
+        <li><a href="login.html"  >Logar</a></li>
       </ul>
     </div>
     <!-- End Navigation -->
   </div>
   <!-- End Header -->
-  <!-- Main -->
   <div id="main">
-    <div class="cl">&nbsp;</div>
-    <!-- Content -->
-    <div id="content">
-      <!-- Content Slider -->
-      <div id="slider" class="box">
-        <div id="slider-holder">
-          <ul>
-            <li><a href="#"><img src="CSS/imagens/calca1.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="CSS/imagens/calca2.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="CSS/imagens/calca3.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="CSS/imagens/saia1.jpg" alt="" /></a></li>
-          </ul>
+         <!-- Page Header -->
+         <div id="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <h25 class="page-header">Cadastro de Produto
+                    <small></small>
+                </h25>
+            </div>
         </div>
-        <div id="slider-nav"> <a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> </div>
-      </div>
-      <!-- End Content Slider -->   
-      <!-- Products -->
-      <div class="products">
-        <div class="cl">&nbsp;</div>
-        <ul>
-          <li> <a href="#"><img src="CSS/imagens/mid1.jpg" alt="" /></a>
-            <div class="product-info">
-              <h3>-- LANÇAMENTO --</h3>
-              
-              <div class="product-desc">
-                <h4>Feminino</h4>
-                <p>Calça Jeans<br />
-                  @Lança Perfume</p>
-                <strong class="price">R$200.00</strong> 
-                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521826170621/?type=3&theater" data-layout="button"></div>
-              </div>
-            </div>
-          </li>
+        <!-- /.row -->
+        
+        
+    <!-- Formulario -->
+    <br>
+    <br>
+    <div id="dadoscadastrar">
+        <fieldset id="fieldsetcadastro">
+                            <legend></legend>
+                            <br>
+    <form action="ProdutoServ" method="post" onsubmit="return validar(this);">
+        
+        <div class="form-group" >
+            <label for="exampleInputEmail1" id="letra">Descrição do Produto</label>
+            <input type="text" class="form-control" id="camponome" name= "descricao" placeholder="Nome do Produto">   
+        </div>
+        
+        <div class="form-group" >
+            <label for="exampleInputEmail1" id="letra">Quantidade do Produto</label>
+            <input type="text" class="form-control" id="camponome" name= "quantidade" placeholder="Quantidade do Produto">   
+        </div>
+        
+        <div class="form-group" >
+            <label for="exampleInputEmail1" id="letra">Valor do Produto</label>
+            <input type="text" class="form-control" id="camponome" name= "valorProduto" placeholder="R$">   
+        </div>
+        
+        <div class="form-group" id ="divcep">
+            <label for="exampleInputPassword1">Peso Físico</label>
+            <input type="text" class="form-control" id="campocep" name= "pesoFisico" placeholder="Peso Físico">
+        </div>
+        
+        <div class="form-group" id ="divcep">
+            <label for="exampleInputPassword1">Peso Cúbico</label>
+            <input type="text" class="form-control" id="campocep" name= "pesoCubico" placeholder="Peso Cúbico">
+        </div>
+        
+        
+
+        <% 
+            CorDao corDao = new CorDao();
+                java.util.List<Cor> corLista = corDao.getCor();
+        %>
+        <div class="styled-select" id="divestado" name="cor">
+            <label for="exampleInputPassword1">Cor</label>
             
-          <li> <a href="#"><img src="CSS/imagens/mid5.jpg" alt="" /></a>
-            <div class="product-info">
-              <h3>-- LANÇAMENTO --</h3>
-              <div class="product-desc">
-                <h4>Feminino</h4>
-                <p>Calça Jeans<br />
-                  @Lança Perfume</p>
-                <strong class="price">R$200.00</strong>
-                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521642837306/?type=3&theater" data-layout="button"></div>
-              </div>
-            </div>
-          </li>
+        <select id="cor" name="cor">    
+            <option>
+                Selecione uma cor
+            </option>
             
-          <li class="last"> <a href="#"><img src="CSS/imagens/mid3.jpg" alt="" /></a>
-            <div class="product-info">
-              <h3>-- LANÇAMENTO --</h3>
-              <div class="product-desc">
-                <h4>Feminino</h4>
-                <p>Calça Jeans<br />
-                  @Lança Perfume</p>
-                <strong class="price">R$200.00</strong> 
-                <div class="fb-share-button" data-href="https://www.facebook.com/missglamourstore02/photos/a.1498163827106422.1073741830.1497494147173390/1607521732837297/?type=3&theater" data-layout="button"></div>
-              </div>
-            </div>
-          </li>
+            <% for (int i = 0; i < corLista.size(); i++) {
+                            Cor cor = corLista.get(i);        
+            %>
             
-        </ul>
-        <div class="cl">&nbsp;</div>
-      </div>
-      <!-- End Products -->
+            <option>
+                <%=cor.getDescricaoCor() %>
+            </option>
+            
+            <% } %>
+                
+        </select>
+        </div>
+
+            
+         <% 
+            TamanhoDao tamanhoDao = new TamanhoDao();
+                java.util.List<Tamanho> tamanhoLista = tamanhoDao.getTamanho();
+        %>
+         <div class="styled-select" id="divtamanho" name="tamanho">
+            <label for="exampleInputPassword1">Tamanho</label>
+            
+        <select id="tamanho" name="tamanho">
+            <option>
+                Selecione um tamanho
+            </option>
+            
+            <% for (int i = 0; i < tamanhoLista.size(); i++) {
+                            Tamanho tamanho = tamanhoLista.get(i);        
+            %>
+            
+            <option>
+                <%=tamanho.getDescricaoTamanho() %>
+            </option>
+            
+            <% } %>        
+        </select>
+         </div>
+        <br>
+        
+        <% 
+            PromocaoDao promocaoDao = new PromocaoDao();
+                java.util.List<Promocao> promocaoLista = promocaoDao.getPromocao();
+        %>
+         <div class="styled-select" id="divestado" name="promocao">
+            <label for="exampleInputPassword1">Promoção</label>
+            
+        <select id="promocao" name="promocao">
+            <option>
+                Seleciona uma promoção
+            </option>
+            <option>
+                Nenhuma
+            </option>
+            
+            <% for (int i = 0; i < promocaoLista.size(); i++) {
+                            Promocao promocao = promocaoLista.get(i);        
+            %>
+            
+            <option>
+                <%=promocao.getDescricaoPromocao()%>
+            </option>
+            
+            <% } %>        
+        </select>      
+        </div>
+        
+                 <% 
+            MarcaDao marcaDao = new MarcaDao();
+                java.util.List<Marca> marcaLista = marcaDao.getMarca();
+        %>
+         <div class="styled-select" id="divcidade" name="marca">
+            <label for="exampleInputPassword1">Marca</label>
+            
+        <select id="marca" name="marca">
+            <option>
+                Selecione uma marca
+            </option>
+            
+            <% for (int i = 0; i < marcaLista.size(); i++) {
+                            Marca marca = marcaLista.get(i);        
+            %>
+            
+            <option>
+                <%=marca.getDescricaoMarca()%>
+            </option>
+            
+            <% } %>        
+        </select>
+         </div>
+        <br>
+        <br>
+        <br>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1" id="letra">Upload Imagem</label>
+            <input type="file" id="letra">
+            <p class="help-block" id="letra">Seleciona uma imagem para o produto</p>
+        </div>
+        <br>
+
+        <button type="submit" name="action" value="cadastrarProduto" id="botaocadastrar" class="btn btn-default">Cadastrar</button>
+        </form>
+                            <br>
+                            </fieldset>
+        </div>
+    <br>
+    <!-- /.form -->
     </div>
-    <!-- End Content -->
-    <!-- Sidebar -->
     <div id="sidebar">
       <!-- Search -->
       <div class="box search">
@@ -167,10 +280,9 @@
     </div>
     <!-- End Sidebar -->
     <div class="cl">&nbsp;</div>
-  </div>
-  <!-- End Main -->
-  <!-- Side Full -->
-  <div class="side-full">
+  </div>     
+    
+    <div class="side-full">
     <!-- More Products -->
     <div class="more-products">
       <div class="more-products-holder">
@@ -269,14 +381,13 @@
     </div>
     <!-- End Text Cols -->
   </div>
-  <!-- End Side Full -->
   <!-- Footer -->
         <div id="footer">
           <p class="left"> <a href="home.html">Home</a> <span>|</span> <a href="contatoForm">Fale conosco</a> <span>| <a href="informacoes.html">Informações</a> </p>
           <p class="right"> &copy; 2015 Miss Glamour. Design by <a href="http://fean.com.br">fean.com.br</a> </p>
         </div>
-  <!-- End Footer -->
-</div>
-<!-- End Shell -->
+    </div>
+   
+    </div>
     </body>
 </html>

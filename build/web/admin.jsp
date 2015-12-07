@@ -35,7 +35,7 @@
     <div id="navigation">
       <ul>
         <li><a href="admin.jsp" class="active">Home</a></li>
-        <li><a href="contatoForm.html" >Cadastrar Produto</a></li>
+        <li><a href="cadastroProduto.jsp" >Cadastrar Produto</a></li>
         <li><a href="cadastroPromocao.jsp" >Cadastrar Promocao</a></li>
         <li><a href="cadastroCliente.jsp" >Atendimento ao Cliente</a></li>
         <li><a href="cadastroCliente.jsp" >Funcionários</a></li>

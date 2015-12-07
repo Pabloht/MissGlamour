@@ -20,7 +20,9 @@ public class Promocao implements java.io.Serializable {
     private Date dataFinal;
     private boolean disponivel;
     private int desconto ;
-
+    private String descricaoPromocao;
+    
+    
     public int getDesconto() {
         return desconto;
     }
@@ -82,6 +84,20 @@ public class Promocao implements java.io.Serializable {
      */
     public void setDataFinal(Date dataFinal) {
         this.dataFinal = dataFinal;
+    }
+
+    /**
+     * @return the descricaoPromocao
+     */
+    public String getDescricaoPromocao() {
+        return descricaoPromocao;
+    }
+
+    /**
+     * @param descricaoPromocao the descricaoPromocao to set
+     */
+    public void setDescricaoPromocao(String descricaoPromocao) {
+        this.descricaoPromocao = descricaoPromocao;
     }
 
       

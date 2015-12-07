@@ -125,7 +125,7 @@ public Cliente LoginCliente(String login, String senha, HttpServletRequest reque
 
 
         String sql = "UPDATE  cliente SET nomeCliente = (?), cpfCnpj = (?), rgIe = (?), telefoneResidencial = (?),"
-                + " celular = (?), telefoneRecado = (?), senha = (?), email=(?), sexo=(?) WHERE id=(?)";
+                + " celular = (?), telefoneRecado = (?), senha = (?), emailPrincipal=(?), sexo=(?) WHERE idCliente=(?)";
 
         PreparedStatement statement = conexao.prepareStatement(sql);
 
@@ -144,27 +144,41 @@ public Cliente LoginCliente(String login, String senha, HttpServletRequest reque
         statement.executeUpdate();
 
     }
- public static Cliente getAluno(int id) throws SQLException {
+ public static void AlterarEndereco(Cliente cliente) throws Exception {
+
+        Connection conexao = DataHelper.GetConexao();
+
+
+        String sql = "UPDATE  cliente SET rua = (?), cep = (?), numero = (?), complemento = (?),"
+                + " idEstado = (?), idCidade = (?), bairro = (?) WHERE idCliente=(?)";
+
+        PreparedStatement statement = conexao.prepareStatement(sql);
+
+        statement.setString(1, cliente.getRua());
+        statement.setString(2, cliente.getCep());
+        statement.setInt(3, cliente.getNumero());
+        statement.setString(4, cliente.getComplemento());
+        statement.setInt(5, cliente.getEstado().getIdEstado());
+        statement.setInt(6, cliente.getCidade().getIdCidade());
+        statement.setString(7, cliente.getBairro());
+        statement.setInt(8, cliente.getIdCliente());
+
+
+        statement.executeUpdate();
+
+    }
+ public static Cliente getCliente(int id) throws SQLException {
        
         Cliente c = new Cliente();
         Estado e = new Estado();
         Cidade ci = new Cidade();
         Connection conexao = DataHelper.GetConexao();
         
-                String sql = "SELECT * FROM cliente where id= " + String.valueOf(id);
-                
-        PreparedStatement statement = conexao.prepareStatement(sql);
-        
-            ResultSet rs = statement.executeQuery();
+                String sql = "SELECT * FROM cliente where idCliente= " + String.valueOf(id);
+                PreparedStatement statement = conexao.prepareStatement(sql);
+                ResultSet rs = statement.executeQuery();
         try {
-            
-            
-              
-                
             while (rs.next()) {
-                
-            
-              
                 c.setIdCliente(rs.getInt("idCliente"));
                 c.setNomeCliente(rs.getString("nomeCliente"));
                 c.setCpfCnpj(rs.getString("cpfCnpj"));

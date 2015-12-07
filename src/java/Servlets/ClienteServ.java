@@ -16,10 +16,12 @@ import Model.Marca;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,7 +41,7 @@ public class ClienteServ extends HttpServlet {
     protected void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         String action = req.getParameter("action");
-        
+        HttpSession session = req.getSession(true);
         if (action.equalsIgnoreCase("cadastrar")) {
             String nome = req.getParameter("nome");          
             String cpf = req.getParameter("cpf");          
@@ -114,7 +116,7 @@ public class ClienteServ extends HttpServlet {
             String nome = req.getParameter("nome");          
             String cpf = req.getParameter("cpf");          
             String rg = req.getParameter("rg");  
-            String telefone = req.getParameter("telefone");          
+            String telefone = req.getParameter("telefoneResidencial");          
             String celular = req.getParameter("celular");          
             String telefoneRecado = req.getParameter("telefoneRecado");          
             String email = req.getParameter("email");          
@@ -131,17 +133,100 @@ public class ClienteServ extends HttpServlet {
                 c.setTelefoneRecado(telefoneRecado);
                 c.setEmail(email);
                 c.setSenha(senha);
-                if(sexo.equals("masculino")) {
+                if(sexo.equals("Masculino")) {
                     c.setSexo(0);
                 } else {
                     c.setSexo(1);
                 }
                 
                 new ClienteDao().AlterarDados(c);
+                session.setAttribute("cliente", null);
+                resp.sendRedirect("home.jsp");
             } catch (Exception ex) {
-                
+                System.out.println(ex);
             }
-            resp.sendRedirect("perfilCliente.jsp");
+            
+        } else if (action.equalsIgnoreCase("alterarEndereco")) {
+            Cliente cl = (Cliente) req.getSession().getAttribute("clientes");
+            
+            String estado = req.getParameter("estado");          
+            String cidade = req.getParameter("cidade");          
+            String bairro = req.getParameter("bairro");  
+            String complemento = req.getParameter("complemento");          
+            String numero = req.getParameter("numero");          
+            String cep = req.getParameter("cep");          
+            String rua = req.getParameter("rua");          
+            Estado e = new Estado();
+            Cidade ci = new Cidade();
+            Cliente c = new Cliente();
+            try {
+                
+                ci = new CidadeDao().getAllCidade(cidade);
+                if(estado.equals(ci.getEstado().getUfEstado())) {
+                    e = new EstadoDao().getEstado(estado);
+                    
+                }
+                c.setIdCliente(cl.getIdCliente());
+                c.setRua(rua);
+                c.setCep(cep);
+                c.setComplemento(complemento);
+                int num = Integer.valueOf(numero);
+                c.setNumero(num);
+                c.setBairro(bairro);
+                c.setEstado(e);
+                c.setCidade(ci);
+                new ClienteDao().AlterarEndereco(c);
+                session.setAttribute("clientes", null);
+                resp.sendRedirect("home.jsp");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+            
+        }
+        
+        
+        else if (action.equalsIgnoreCase("mostrar")) 
+        {
+            int id = Integer.valueOf(req.getParameter("id"));
+            
+            try {
+            Cliente c = ClienteDao.getCliente(id);
+
+            session.setAttribute("cliente", c);
+            RequestDispatcher dispacher;
+
+        dispacher = getServletContext().getRequestDispatcher("/perfilCliente.jsp");      
+
+        dispacher.forward(req, resp);
+            } catch(Exception ex) {
+                System.out.println(ex);
+            }
+             
+            
+
+          
+
+        }  else if (action.equalsIgnoreCase("mostrarEndereco")) 
+        {
+            int id = Integer.valueOf(req.getParameter("id"));
+            
+            try {
+            Cliente c = ClienteDao.getCliente(id);
+
+            session.setAttribute("clientes", c);
+            RequestDispatcher dispacher;
+
+        dispacher = getServletContext().getRequestDispatcher("/perfilCliente.jsp");      
+
+        dispacher.forward(req, resp);
+            } catch(Exception ex) {
+                System.out.println(ex);
+            }
+             
+            
+
+          
+
         }
     }
 

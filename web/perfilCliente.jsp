@@ -67,9 +67,33 @@
         <%
 
             Cliente cl = (Cliente) session.getAttribute("cliente");
-
+            
             if (cl != null) {
-                out.print(" $('#edit').bPopup();");
+                
+                out.print(" $('#boxes').bPopup();");
+                
+            }
+
+        %>
+
+            });
+
+        })(jQuery);
+
+    </script>
+    <script type="text/javascript">
+
+        (function($) {
+            $(function() {
+
+        <%
+
+            Cliente cli = (Cliente) session.getAttribute("clientes");
+            
+            if (cli != null) {
+                
+                out.print(" $('#boxesendereco').bPopup();");
+                
             }
 
         %>
@@ -85,7 +109,9 @@
          Cliente cliente = new Cliente();
          Cidade cidade = new Cidade();
          Estado estado = new Estado();
-           cliente.setNomeCliente((String) session.getAttribute("nomeClienteAutenticado"));
+            
+            cliente.setIdCliente((Integer) session.getAttribute("idClienteAutenticado"));
+            cliente.setNomeCliente((String) session.getAttribute("nomeClienteAutenticado"));
             cliente.setCpfCnpj((String) session.getAttribute("cpfCnpjAutenticado"));
             cliente.setRgIe((String) session.getAttribute("rgIeAutenticado"));
             cliente.setRua((String) session.getAttribute("ruaAutenticado"));
@@ -155,7 +181,8 @@
                     <div id="content">
                         <!-- Dados Pessoais-->
                         <div id="dados">
-                        <fieldset id="fieldsetperfil">
+                        <fieldset id="fieldsetperfil">  
+                            
                             <legend><h4>Dados Pessoais:</h4></legend>
                             <br>
            <div class="form-group" id="divcamposesquerda">
@@ -195,9 +222,10 @@
             <label for="exampleInputPassword1">Senha</label>
             <input type="password" class="form-control" id="campodireita" name= "senha" value="<% out.print(cliente.getSenha());   %>" readonly>
         </div>
-            <button type="submit" class="logar btn btn-default" name="modal" name="action" value="cadastrar" id="botaoalterar">Alterar</button>
+            <a href="./ClienteServ?id=<% out.print(cliente.getIdCliente());%>&action=mostrar" class="logar btn btn-default" name="modal" id="botaoalterar">Alterar</a>
             <br>
             <br>
+            
                         </fieldset>
         </div>
         <br>
@@ -235,7 +263,8 @@
             <input type="text" class="form-control" id="campoenderecocliente" name= "rua" value="<% out.print(cliente.getRua());   %>" readonly>
         </div>
         
-            <button type="submit" name="modal" id="botaoalterar" class="logarendereco btn btn-default">Alterar</button>
+            <a href="./ClienteServ?id=<% out.print(cliente.getIdCliente());%>&action=mostrarEndereco" class="logarendereco btn btn-default" name="modal" id="botaoalterar">Alterar</a>
+
             <br>
             <br>
                         </fieldset>
@@ -406,7 +435,7 @@
          </div>
          <div id="boxes">     
             <span class="b-close"> X </span>
-            <form name="" method="post" action="ClienteServ"><br>
+            <form action="#" name="alterarDados"><br>
                <div id="dadosbox">
                         <fieldset id="fieldsetperfil">
                             <legend><h4>Dados Pessoais:</h4></legend>
@@ -453,6 +482,7 @@
             <input type="password" class="form-control" id="campodireita" name= "nnnao" placeholder="Senha..." >
         </div>
             <button type="submit" name="action" value="alterarDados" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <input type="hidden" name="action" value="alterarDados">
             <br>
             <br>
                         </fieldset>
@@ -463,41 +493,42 @@
         
         <div id="boxesendereco">     
             <span class="b-close"> X </span>
-            <form name="" method="post" action="check.jsp"><br>
+            <form  action="#" name="alterarEndereco"><br>
               <div id="dadosbox">
                         <fieldset id="fieldsetperfil">
                             <legend><h4>ENDEREÇO:</h4></legend>
                             <br>
            <div class="form-group" id="divcamposesquerda">
             <label for="exampleInputPassword1" id="telaPerfil">Estado</label>
-            <input type="text" class="form-control" id="campoesquerda"  name= "estado" value="<% out.print(cliente.getEstado().getNomeEstado()); %>" readonly>
+            <input type="text" class="form-control" id="campoesquerda"  name= "estado" value="<% out.print(cliente.getEstado().getNomeEstado()); %>" >
         </div>
         <div class="form-group" id="divcamposdireita" >
             <label for="exampleInputPassword1">Cidade</label>
-            <input type="text" class="form-control" id="campodireita" name= "cidade" value="<% out.print(cliente.getCidade().getNomeCidade()); %>" readonly>
+            <input type="text" class="form-control" id="campodireita" name= "cidade" value="<% out.print(cliente.getCidade().getNomeCidade()); %>" >
         </div>
         <div class="form-group" id="divcamposesquerda">
             <label for="exampleInputPassword1">Bairro</label>
-            <input type="text" class="form-control" id="campoesquerda" name= "bairro" value="<% out.print(cliente.getBairro());   %>" readonly>
+            <input type="text" class="form-control" id="campoesquerda" name= "bairro" value="<% out.print(cliente.getBairro());   %>" >
         </div>
         <div class="form-group" id="divcamposdireita">
             <label for="exampleInputPassword1">Complemento</label>
-            <input type="text" class="form-control" id="campodireita" name= "complemento" value="<% out.print(cliente.getComplemento());   %>" readonly>
+            <input type="text" class="form-control" id="campodireita" name= "complemento" value="<% out.print(cliente.getComplemento());   %>" >
         </div>
         <div class="form-group" id="divcamposesquerda">
             <label for="exampleInputPassword1">Número</label>
-            <input type="text" class="form-control" id="campoesquerda" name= "numero" value="<% out.print(cliente.getNumero());   %>" readonly>
+            <input type="text" class="form-control" id="campoesquerda" name= "numero" value="<% out.print(cliente.getNumero());   %>" >
         </div>
         <div class="form-group" id="divcamposdireita">
             <label for="exampleInputPassword1">CEP</label>
-            <input type="text" class="form-control" id="campodireita" name= "cep" value="<% out.print(cliente.getCep());   %>" readonly>
+            <input type="text" class="form-control" id="campodireita" name= "cep" value="<% out.print(cliente.getCep());   %>" >
         </div>
         <div class="form-group" id="divemailesquerda">
             <label for="exampleInputPassword1" id="textoemail">Endereço</label>
-            <input type="text" class="form-control" id="campoenderecocliente" name= "rua" value="<% out.print(cliente.getRua());   %>" readonly>
+            <input type="text" class="form-control" id="campoenderecocliente" name= "rua" value="<% out.print(cliente.getRua());   %>" >
         </div>
         
-            <button type="submit" name="modal" id="botaoalterar" class="logar btn btn-default">Alterar</button>
+            <button type="submit" name="action" value="alterarEndereco" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <input type="hidden" name="action" value="alterarEndereco">
             <br>
             <br>
                         </fieldset>

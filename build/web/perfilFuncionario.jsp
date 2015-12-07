@@ -17,7 +17,47 @@
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
+    <script type="text/javascript">
+(function($) {
+                $(function() {
+
+
+                    $('.logar').bind('click', function(e) {
+
+
+                        $('#boxes').bPopup();
+
+                    });
+
+                });
+
+            })(jQuery);
+
+</script>
     </head>
+     <script type="text/javascript">
+
+        (function($) {
+            $(function() {
+
+        <%
+
+            Funcionario ff = (Funcionario) session.getAttribute("funcionario");
+            
+            if (ff != null) {
+                
+                out.print(" $('#boxes').bPopup();");
+                
+            }
+
+        %>
+
+            });
+
+        })(jQuery);
+
+    </script>
     <body>
         <%  
             session = request.getSession();
@@ -80,7 +120,7 @@
         </div>
         
         
-            <button type="submit" name="action" value="cadastrar" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <a href="./FuncionarioServ?id=<% out.print(funcionario.getIdFuncionario());%>&action=mostrar" class="logar btn btn-default" name="modal" id="botaoalterar">Alterar</a>
             <br>
             <br>
 
@@ -250,5 +290,40 @@
   <!-- End Footer -->
         </div>
          </div>
+        <div id="boxes">     
+            <span class="b-close"> X </span>
+            <form action="#" name="alterarDados"><br>
+               <div id="dadosbox">
+                        <fieldset id="fieldsetperfil">
+                            <legend><h4>Dados Pessoais:</h4></legend>
+                            <br>
+            <div class="form-group" id="camposesquerda">
+            <label for="exampleInputPassword1" id="telaPerfil">Nome</label>
+            <input type="text" class="form-control" id="campoesquerda"  name= "nome" value="<% out.print(funcionario.getNomeFuncionario()); %>" >
+        </div>
+            <div class="form-group" id="divcamposesquerda">
+            <label for="exampleInputPassword1" id="telaPerfil">Senha</label>
+            <input type="text" class="form-control" id="campoesquerda"  name= "senha" placeholder="Senha..." >
+        </div>
+        <div class="form-group" id="divcamposdireita" >
+            <label for="exampleInputPassword1">Nova Senha</label>
+            <input type="password" class="form-control" id="campodireita" name= "novasenha" placeholder="Nova Senha...">
+        </div>
+        
+        <div class="form-group" id="divemailesquerda">
+            <label for="exampleInputPassword1" id="textoemail">Email</label>
+            <input type="text" class="form-control" id="campoemailcliente" name= "email" value="<% out.print(funcionario.getEmailFuncionario());   %>" >
+        </div>
+        
+        
+            <button type="submit" name="action" value="alterarDados" id="botaoalterar" class="btn btn-default">Alterar</button>
+            <input type="hidden" name="action" value="alterarDados">
+            <br>
+            <br>
+                        </fieldset>
+        </div>
+            </form>
+
+        </div>
     </body>
 </html>

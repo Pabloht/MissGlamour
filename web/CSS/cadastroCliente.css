@@ -679,6 +679,12 @@ dd {
 #divrg, #divnumero, #divbairro, #divcelular, #divemail, #divcidade, #divsenha{
  margin-left: 55%;   
 }
+
+#divtamanho {
+    margin-left: 55%;
+    margin-top: 11.8%;   
+    
+}
 #divsenha2, #divlogin2 {
     
 }

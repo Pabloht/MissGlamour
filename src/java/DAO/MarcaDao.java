@@ -10,6 +10,9 @@ import Model.Marca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -17,7 +20,47 @@ import java.sql.ResultSet;
  * @author PabloHenrique
  */
 public class MarcaDao {
+    public List<Marca> getMarca() {
+        List<Marca> marcaLista = new ArrayList<>();
+        try {
+            Connection conexao = DataHelper.GetConexao();
+            String sql = "SELECT * FROM marca";
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            Marca marca = new Marca();
+            while (rs.next()) {
+
+                marca.setIdMarca(rs.getInt("idMarca"));
+                marca.setDescricaoMarca(rs.getString("descricaoMarca"));
+                
+                marcaLista.add(marca);
+                
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return marcaLista;
+    }
     
+    public Marca getAllMarca(String descricao) {
+        Marca marca = new Marca();
+
+        try {
+            Connection conexao = DataHelper.GetConexao();
+            String sql = "select * from marca where descricaoMarca= '"+descricao+"';";
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            
+            while (rs.next()) {
+                marca.setIdMarca(rs.getInt("idMarca"));
+                marca.setDescricaoMarca(rs.getString("descricaoMarca"));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return marca;
+    }
     
     
  
